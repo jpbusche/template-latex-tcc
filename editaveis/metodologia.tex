@@ -8,3 +8,23 @@ A metodologia ágil surgiu no ano de 2001, com a reunião de especialistas em pr
 Os requisitos do projeto serão classificados em três níveis de hierarquia:  épicos, features e user stories. Os épicos são compostos por features e representam macro entregáveis do projeto, geralmente são descritos como o nível mais abstrato. As features são agrupamentos de user stories e representam funcionalidades do sistema. User stories são pequenas partes de uma funcionalidade do sistema e que serão implementadas, user stories também podem ser classificadas como technical stories, estas technical stories representam atividades que não agregam muito valor ao cliente, porém elas agregam numa melhora interna no software.
 
 No contexto do projeto as features serão equivalentes às milestones, e as stories (users ou technical) serão as issues. Para uma melhor visualização dos requisitos do projeto, será montado uma matriz de rastreabilidade que é mostrada abaixo:
+\section*{Arquitetura do Projeto}
+A arquitetura do projeto é dividida principalmente em cinco partes, sendo elas: os logs, o software de extração, o banco de indexação, a API de consumo e a plataforma web. A ligação entre as partes e sua posição na arquitetura ficam evidenciado na imagem abaixo.
+\subsection*{Logs}
+Logs é a parte onde se concentra os dados que serão utilizados para o desenvolvimento da plataforma web, como mostrado na figura, logs representam de onde virão os dados, sejam elas de um banco de dados, de uma função crawlers, de alguma API ou de um arquivo local.
+
+Esses logs serão guardados e manipulados pelo software de extração. Para o escopo inicial do projeto serão utilizados três logs, sendo eles três APIs, a API do Steam Spy, a API do Steam Store e a API do Steam Web.
+\subsection*{Software de Extração}
+O software de extração é dividido em três componentes principais, sendo eles: o handler, a classe main e os plugins. A arquitetura do software de extração e a interação entre seus componentes são demonstrados na imagem abaixo.
+
+A classe Main é responsável por criar o banco de indexação e fazer a primeira população necessária no mesmo. Como demonstrado na imagem da arquitetura do software de extração a classe main irá receber os dados para a primeira inserção dos plugins.
+
+O handler é responsável por atualizar as informações no banco de indexação. Essas informações virão do plugin que além de mandar a informação deve indicar com que frequência esses dados devem ser atualizados.
+
+Já os plugins são responsáveis por extrair os dados dos logs, manipulá-los caso seja necessário e enviar para o banco de dados. Para que o software de extração possua uma melhor organização, cada plugin só deve ser responsável por um tipo de log, pois assim permite que futuramente outros plugins sejam adicionados no software de extração.
+\subsection*{Banco de Indexação}
+O banco de indexação será responsável por guardar os dados extraídos do log pelo software de extração. Como a Steam possui muito jogos, o banco de indexação que será usado deverá suportar um grande número de dados e também possuir uma rapidez na hora da busca. O banco de dados escolhido foi o Elasticsearch, por que além de suportar grandes quantidades de dados e ser rápido, ele também disponibiliza certa estatísticas sobre os dados e ser suportado por muitas linguagens de programação.
+\subsection*{API de Consumo}
+A API de consumo é responsável principalmente por permitir que mais de uma plataforma possam utilizar seus dados. Está API irá consumir os dados do banco de indexação e a partir disso gerar links de API. Os principais links que serão desenvolvidos no escopo do projeto serão os de rankings e os de jogos.
+\subsection*{Plataforma Web}
+A plataforma web é o principal componente da arquitetura, pois é nele que será mostrado as métricas levantadas para o auxilios das desenvolvedores. Está plataforma irá consumir os dados disponibilizados pela API, montar métricas em cima desses dados e disponibilizá-los de maneira que seja fácil a interpretação dos usuários. A plataforma também será responsável por montar pequenas sugestões para as desenvolvedoras.
