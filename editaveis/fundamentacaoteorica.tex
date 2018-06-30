@@ -1,7 +1,7 @@
-\chapter*[Fundamentação Teórica]{Fundamentação Teórica}
+\chapter[Fundamentação Teórica]{Fundamentação Teórica}
 Neste capitulo será abordado a fundamentação teórica para o entendimento do propósito da implementação do projeto. Nele são explicados o que é Game Analytics e Business Intelligence, também serão abordado as posséveis ferramentas que serão utilizadas no decorrer do projeto e também possíveis concorrentes do projeto.
-\section*{Análise de Ferramentas}
-\subsection*{Banco de Dados}
+\section{Análise de Ferramentas}
+\subsection{Banco de Dados}
 A ferramenta de banco de dados é responsável pelo armazenamento dos dados extraídos dos logs, no contexto desse projeto, este banco deverá armazenar os dados de todos os jogos disponibilizados pela API da Steam.
 \subsubsection*{PostgreSQL}
 Postgre é uma ferramenta open-source de banco de dados que utiliza a linguagem SQL em conjunto com outras funcionalidades que guardam e manipulam os mais complicados dos dados. Postgre é uma ferramenta antiga tendo sua origem datada no ano de 1986\cite{postgresql}.
@@ -11,13 +11,13 @@ Postgre é uma ferramenta que possui muitas funcionalidades com o intuito de aju
 Elasticsearch é uma ferramenta open-source, desenvolvida pela Elastic, de análise e busca RESTful capaz de resolver um grande número de casos. É a parte principal de Elastic Stack, servindo como um centro onde armazena os dados\cite{elasticsearch}.
 
 Elasticsearch suporta qualquer tipo de dado, além de agregar grande quantidades de dados para se ter uma visão melhor. Entre suas características as que mais se destacam são sua rapidez de busca, capacidade de detecção de falhas, múltiplos tipos de dados e suporte a múltiplas linguagens de programação.
-\subsection*{Extração de Dados}
+\subsection{Extração de Dados}
 A ferramenta de extração de dados é responsável pela extração dos dados dos logs, além de ter que fazer a comunicação com o banco de dados. Essa ferramenta deverá extrair os dados das APIs que serão utilizadas, manipulá-los e inserir no banco de dados.
 \subsubsection*{Logstash}
 Logstash é a ferramenta de extração de dados, desenvolvida pela Elastic, ele faz parte de Elastic Stack em conjunto com o Elasticsearch. Entre as características as que mais destacam são sua capacidade de conseguir extrair qualquer tipo de dado, além de permitir a criação de filtros para transformar e manipular os dados extraídos e também permite uma gama de outputs para onde o dado será enviado\cite{logstash}.
 \subsubsection*{Owner}
 Outra opção de extração de dados e a criação de um software específico para a plataforma. Este software seria criado na linguagem Ruby que também possui ligação com o Elasticsearch. As vantagens desse tipo de software seria que poderia ser implementado um arquitetura de plugins, assim futuramente, outros tipos de dados seriam aceitos na plataforma, além de que caso futuramente seja necessário a mudança do banco de dados, a adaptação para o novo banco seria menos custosa.
-\subsection*{Frequência dos Dados}
+\subsection{Frequência dos Dados}
 A ferramenta da frequência de dados, será mais um auxiliar na hora da extração de dados. Como será extraídos dados que possuem uma taxa de modificação muito grande, é necessário utilizar uma ferramenta que crie rotinas para essa extração.
 \subsubsection*{Cronjob}
 Cron job é uma ferramenta de agendamento que permite controlar tarefas a serem executadas em tempos pré-configurados. Através dela é possível configurar tarefas automáticas, isso quer dizer que, você pode definir rotinas a serem executadas em um horário específico. Cron jobs são configurados manualmente pelo terminal, podendo serem configurados para atualizações por minutos, horas, dias (do mês ou da semana) e meses
@@ -25,11 +25,12 @@ Cron job é uma ferramenta de agendamento que permite controlar tarefas a serem 
 Whenever é uma gem do ruby, mais especificamente para o framework rails. Está gem utiliza os cron jobs como fundo para gerenciar e controlar tarefas a serem executadas em rotinas ou em um horário específico\cite{whenever}.
 \subsubsection*{Clockwork}
 Clockwork é uma gem do ruby. Está gem também utiliza os cron jobs, porém diferente de whenever, ele não exige que o software possua uma arquitetura MVC. Ele é utilizado especificamente para a criação de rotinas para tarefas que serão executadas automaticamente pela gem\cite{clockwork}.
-\section*{Análise de Concorrentes}
+\section{Análise de Concorrentes}
 Nesta parte de documento é levantado os possíveis concorrentes, que possuem características ou objetivos parecidos com o projeto a ser desenvolvido. Os principais concorrentes são o Steam DB, uma ferramenta que disponibiliza informações sobre o banco de dados da Steam; a Steam Spy, uma plataforma web que disponibiliza informações sobre os jogos e suas vendas por região e o DFC Intelligence, uma ferramenta de pesquisa sobre o mercado de jogos.
-\subsection*{Steam DB}
-Steam DB é uma ferramenta open-source third-party com objetivo de dar uma melhor conhecimento sobre as aplicações e pacotes disponíveis no banco de dados da Steam\cite{steam_db}. Está ferramenta funciona de uma maneira onde é disponibilizado rankings de jogos e gráficos de um jogo para que o usuário tenha uma melhor visualização. Uma diferença crucial entre o Steam DB e o projeto proposto está no aspecto que o projeto não se especifica num jogo apenas, sendo mais genérico.
-\begin{center}
+\subsection{Steam DB}
+Steam DB é uma ferramenta open-source third-party com objetivo de dar uma melhor conhecimento sobre as aplicações e pacotes disponíveis no banco de dados da Steam\cite{steam_db}. Está ferramenta funciona de uma maneira onde é disponibilizado rankings de jogos e gráficos de um jogo para que o usuário tenha uma melhor visualização. Uma diferença crucial entre o Steam DB e o projeto proposto está no aspecto que o projeto não se especifica num jogo apenas, sendo mais genérico.Na tabela \ref{table:steam_db} podemos ver as vantagens e desvantagens do Steam DB.
+\begin{table}
+\centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
 \hline \textbf{Vantagens} & \textbf{Desvantagens}
 \\
@@ -43,10 +44,13 @@ Steam DB é uma ferramenta open-source third-party com objetivo de dar uma melho
 \\
 \hline
 \end{tabular}
-\end{center}
-\subsection*{Steam Spy}
-Steam Spy é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de algum jogo ou vendas por região de determinado jogo de maneira eficiente e bonita\cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores indies, porém para se conseguir todos os dados disponíveis pela plataforma é preciso pagar. Uma diferença crucial entre o Steam Spy e o projeto é que o projeto está focado apenas no auxílio de desenvolvedores e também que será uma ferramenta open-source e gratuita
-\begin{center}
+\caption{Vantagens e Desvantagens Steam DB}
+\label{table:steam_db}
+\end{table}
+\subsection{Steam Spy}
+Steam Spy é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de algum jogo ou vendas por região de determinado jogo de maneira eficiente e bonita\cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores indies, porém para se conseguir todos os dados disponíveis pela plataforma é preciso pagar. Uma diferença crucial entre o Steam Spy e o projeto é que o projeto está focado apenas no auxílio de desenvolvedores e também que será uma ferramenta open-source e gratuita. Na tabela \ref{table:steam_spy} podemos ver as vantagens e desvantagens do Steam Spy.
+\begin{table}
+\centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
 \hline \textbf{Vantagens} & \textbf{Desvantagens}
 \\
@@ -58,10 +62,13 @@ Steam Spy é uma plataforma Web que a partir de informações sobre os usuários
 \\
 \hline
 \end{tabular}
-\end{center}
-\subsection*{DFC Intelligence}
-DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado. Para ser mais específico, uma desenvolvedora que utilize essa ferramenta receberá informações sobre o número de vendas de seus jogos, picos de vendas, regiões que mais venderam, entre outras. Também será disponibilizado gráficos e métricas que informam como está o mercado de jogos\cite{dfc_intelligence}. Uma diferença do projeto para o DFC Intelligence, além do fato do projeto ser gratuito, e que o projeto não irá focar apenas numa desenvolvedora e sim no mercado inteiro de jogos.
-\begin{center}
+\caption{Vantagens e Desvantagens Steam Spy}
+\label{table:steam_spy}
+\end{table}
+\subsection{DFC Intelligence}
+DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado. Para ser mais específico, uma desenvolvedora que utilize essa ferramenta receberá informações sobre o número de vendas de seus jogos, picos de vendas, regiões que mais venderam, entre outras. Também será disponibilizado gráficos e métricas que informam como está o mercado de jogos\cite{dfc_intelligence}. Uma diferença do projeto para o DFC Intelligence, além do fato do projeto ser gratuito, e que o projeto não irá focar apenas numa desenvolvedora e sim no mercado inteiro de jogos.Na tabela \ref{table:dfc_intelligence} podemos ver as vantagens e desvantagens do Steam DB.
+\begin{table}
+\centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
 \hline \textbf{Vantagens} & \textbf{Desvantagens}
 \\
@@ -75,4 +82,6 @@ DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar con
 \\
 \hline
 \end{tabular}
-\end{center}
+\caption{Vantagens e Desvantagens DFC Intelligence}
+\label{table:dfc_intelligence}
+\end{table}
