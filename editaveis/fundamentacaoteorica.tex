@@ -1,5 +1,28 @@
 \chapter[Fundamentação Teórica]{Fundamentação Teórica}
-Neste capitulo será abordado a fundamentação teórica para o entendimento do propósito da implementação do projeto. Nele são explicados o que é Game Analytics e Business Intelligence, também serão abordado as posséveis ferramentas que serão utilizadas no decorrer do projeto e também possíveis concorrentes do projeto.
+Neste capitulo será abordado a fundamentação teórica para o entendimento do propósito da implementação do projeto. Nele são explicados o que é Game Analytics e Business Intelligence, também serão abordados softwares parecidos com o que será desenvolvido.
+\section{Game Analytics}
+O desenvolvimento de jogos hoje pode se mostrar como um grande desafio, e grande parte deste desafio se dá pelo fato do grande número de jogos publicados. Para auxiliar as desenvolvedoras a criarem jogos eficientemente foram criados várias ferramentas e técnicas, um destes métodos é o analytics.
+
+Analytics é o processo de descobrir e comunicar padrões em dados, solucionando problemas de negócios ou suportar decisões de gerenciamento de empresas. Está metodologia possui seus fundamentos em mineração de dados, na matemática, estatística, programação e operações de busca, como também na visualização dos dados, de forma a comunicar padrões relevantes. Vale mencionar que o analytics não é apenas perguntar e relatar dados de BI, e sim análises atual daqueles dados\cite{analytics}. 
+
+Game analytics é uma aplicação do analytics para o contexto de desenvolvimento de jogos\cite{game_analytics}. Um dos maiores benefícios em utilizar o game analytics é o suporte na hora de fazer decisões em todos os níveis e áreas organizacionais. Este método é direcionado tanto como a análise de um jogo com um produto, tanto como a análise de um jogo como projeto.
+
+A aplicação padrão do game analytics é na hora de informar o GUR(Game User Research). GUR é a aplicação de várias técnicas e metodologias para avaliar a maneira na qual os jogadores jogam, e o nível de interação entre o jogador e o jogo. Vale mencionar que game analytics não é só GUR, já que o GUR é focado nos dados obtidos a partir dos usuários, já o game analytics considera todos os tipo de dados obtidos no desenvolvimento do jogo.
+\subsection{Telemetria}
+Telemetria são os dados obtidos à distância, geralmente digitais, porém qualquer dado transmitido à distância e telemetria. No contexto de jogos, telemetria seria algum jogo transmitindo dados sobre a interação do jogador com o jogo.
+
+Telemetria de jogos é o termo utilizado para qualquer dado obtidos a distância que pertence durante o desenvolvimento ou evolução de um jogo, e isto inclui o monitoramento e análise de: servidores, dispositivos celulares e comportamento dos usuários. A fonte que produz mais dados por telemetrias, são os de usuário, por exemplo, interação com jogos, comportamento de compra e interações com outros jogadores ou aplicativos\cite{telemetry}.
+\subsection{Game Metrics}
+Em sua forma pura, os dados obtidos a partir da telemetria, não são de muito auxílio, por isso estes dados devem ser transformado em várias métricas interpretativas, como: o número de jogadores ativos por dia, bugs arrumados por semana, entre outros. Essas métricas são chamadas de game metrics. Game metrics possuem os mesmo potencial que outras fontes de BI. Game metrics geralmente são definidas como um medição quantitativa de um ou mais atributos, de um ou mais objetos que operem no contexto de um jogo.
+
+Métricas podem ser variáveis ou  agregações mais complexas, como a soma de várias variáveis, em outras palavras as métricas podem ser simples variáveis que geram uma análise básica, ou a combinação de várias variáveis para gerar uma análise mais complexa e completa. Métricas que não estão relacionadas diretamente ao jogo, são chamadas de métricas de negócios. Durante a utilização do game analytics é essencial a distinção entre as métricas de negócio e as game metrics.
+
+As game metrics foram categorizadas em três tipos por Mellon\cite{game_metrics}, ou seja, as game metrics podem ser definidas como:
+\begin{itemize}
+	\item \textbf{Métricas de usuário}: São métricas relacionadas aos usuários que jogam aquele jogo, pela perspectiva de jogadores, ou de clientes. A perspectiva de cliente é utilizada quando as métricas são relacionadas a receita. A perspectiva de jogador é utilizada para investigar como é a interação das pessoas com o sistema do jogo e seus componentes.
+	\item \textbf{Métricas de performance}: São métricas relacionadas a performance da tecnologia e arquitetura utilizada no jogo, muito relevantes para jogos onlines. Essas métricas geralmente são utilizadas no monitoramento dos impactos causado por alguma atualização no jogo.
+	\item \textbf{Métricas de processo}: São métricas relacionadas ao processo de desenvolvimento de jogos. Similares as métricas de performance, são utilizadas para gerenciar e monitorar métodos que foram adotados, ou que foram adotados na hora do desenvolvimento do jogo. 
+\end{itemize}
 \section{Análise de Ferramentas}
 \subsection{Banco de Dados}
 A ferramenta de banco de dados é responsável pelo armazenamento dos dados extraídos dos logs, no contexto desse projeto, este banco deverá armazenar os dados de todos os jogos disponibilizados pela API da Steam.
