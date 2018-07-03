@@ -3,13 +3,31 @@ A metodologia escolhida para o desenvolvimento do projeto será a metodologia á
 
 A metodologia Kanban surgiu no Japão com o TPS\cite{tps} para controlar a fabricação de automóveis e foi inserida no meio de desenvolvimento de software no ano de 2007. Kanban é um termo japonês para sinal visual, uma das grandes características dessa metodologia é evidenciar os problemas existentes no processo. 
 
-A metodologia ágil surgiu no ano de 2001, com a reunião de especialistas em processos de desenvolvimento de software para discutir maneiras de melhorar o desempenho em projetos, com isso foi criado o Manifesto Ágil. Uma das características das metodologias ágeis são sua capacidade de adaptar a novos fatores durante o desenvolvimento do projeto, ao invés de tentar prever o que pode acontecer e o que não pode
+A metodologia ágil surgiu no ano de 2001, com a reunião de especialistas em processos de desenvolvimento de software para discutir maneiras de melhorar o desempenho em projetos, com isso foi criado o Manifesto Ágil\cite{agil}. Uma das características das metodologias ágeis são sua capacidade de adaptar a novos fatores durante o desenvolvimento do projeto, ao invés de tentar prever o que pode acontecer e o que não pode
 \section{Requisitos}
 Os requisitos do projeto serão classificados em três níveis de hierarquia:  épicos, features e user stories. Os épicos são compostos por features e representam macro entregáveis do projeto, geralmente são descritos como o nível mais abstrato. As features são agrupamentos de user stories e representam funcionalidades do sistema. User stories são pequenas partes de uma funcionalidade do sistema e que serão implementadas, user stories também podem ser classificadas como technical stories, estas technical stories representam atividades que não agregam muito valor ao cliente, porém elas agregam numa melhora interna no software.
 
-No contexto do projeto as features serão equivalentes às milestones, e as stories (users ou technical) serão as issues. Para uma melhor visualização dos requisitos do projeto, será montado uma matriz de rastreabilidade que é mostrada abaixo:
+No contexto do projeto as features serão equivalentes às milestones, e as stories (users ou technical) serão as issues. Para uma melhor visualização dos requisitos do projeto, será montado uma matriz de rastreabilidade para cada epico, sendo mostrado nas figuras \ref{image:ep01}, \ref{image:ep02} e \ref{image:ep03}.
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{figuras/EP01.eps}
+\caption{Matriz Rastreabilidade Épico 1}
+\label{image:ep01}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{figuras/EP02.eps}
+\caption{Matriz Rastreabilidade Épico 2}
+\label{image:ep02}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{figuras/EP03.eps}
+\caption{Matriz Rastreabilidade Épico 3}
+\label{image:ep03}
+\end{figure}
 \section{Arquitetura do Projeto}
-A arquitetura do projeto é dividida principalmente em cinco partes, sendo elas: os logs, o software de extração, o banco de indexação, a API de consumo e a plataforma web. A ligação entre as partes e sua posição na arquitetura ficam evidenciado na imagem \ref{image:arquitetura}.
+A arquitetura do projeto é dividida principalmente em cinco partes, sendo elas: os logs, o software de extração, o banco de indexação, a API de consumo e a plataforma web. A ligação entre as partes e sua posição na arquitetura ficam evidenciado na figura \ref{image:arquitetura}.
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{figuras/arquiteturaGeral.eps}
@@ -21,7 +39,7 @@ Logs é a parte onde se concentra os dados que serão utilizados para o desenvol
 
 Esses logs serão guardados e manipulados pelo software de extração. Para o escopo inicial do projeto serão utilizados três logs, sendo eles três APIs, a API do Steam Spy, a API do Steam Store e a API do Steam Web.
 \subsection{Software de Extração}
-O software de extração é dividido em três componentes principais, sendo eles: o handler, a classe main e os plugins. A arquitetura do software de extração e a interação entre seus componentes são demonstrados na imagem \ref{image:extracao}.
+O software de extração é dividido em três componentes principais, sendo eles: o handler, a classe main e os plugins. A arquitetura do software de extração e a interação entre seus componentes são demonstrados na figura \ref{image:extracao}.
 \begin{figure}
 \centering
 \includegraphics[scale=0.35]{figuras/softwareExtracao.eps}
@@ -79,19 +97,85 @@ Outra funcionalidade importante para a plataforma web é a habilidade de fazer s
 
 As métricas que serão disponibilizadas inicialmente pela plataforma são:
 \begin{itemize}
-	\item Número total de jogos que atendam aquele determinado perfil.
-	\item Número médio de donos que um jogo que atende aquele determinado perfil.
-	\item Média das porcentagens de avaliações positivas de um jogo que atende aquele determinado perfil.
-	\item Mês que possui o maior número de lançamento que atendam aquele determinado perfil.
-	\item Gráfico de lançamentos por mês que atendam aquele determinado perfil.
-	\item Preço médio de um jogo que atende aquele determinado perfil.
-	\item Número de jogos que foram publicados pela própria desenvolvedora que atendam aquele determinado perfil.
-	\item Número de jogos que foram publicado por outra empresa que atendam aquele determinado perfil.
-	\item Gráfico que compara os números de jogos que foram publicados pela desenvolvedora pelo números de jogos que foram publicados por outra empresa por ano.
+	\item Número total de jogos que atendam aquele determinado perfil. A figura \ref{image:num_total} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{figuras/num_jogos.eps}
+	\caption{Número total de jogos}
+	\label{image:num_total}
+	\end{figure}
+	\item Número médio de donos que um jogo que atende aquele determinado perfil. A figura \ref{image:med_donos} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{figuras/media_donos.eps}
+	\caption{Número médio de donos}
+	\label{image:med_donos}
+	\end{figure}
+	\item Média das porcentagens de avaliações positivas de um jogo que atende aquele determinado perfil. A figura \ref{image:avaliacoes} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.3]{figuras/avaliacao.eps}
+	\caption{Média das porcentagens de avaliações positivas}
+	\label{image:avaliacoes}
+	\end{figure}
+	\item Mês que possui o maior número de lançamento que atendam aquele determinado perfil. A figura \ref{image:mes} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{figuras/mes.eps}
+	\caption{Mês com mais lançamentos}
+	\label{image:mes}
+	\end{figure}
+	\item Gráfico de lançamentos por mês que atendam aquele determinado perfil. A figura \ref{image:lancxmes} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{figuras/lancamentoxmes.eps}
+	\caption{Lançamentos x Mês}
+	\label{image:lancxmes}
+	\end{figure}
+	\item Preço médio de um jogo que atende aquele determinado perfil. A figura \ref{image:preco} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{figuras/preco_medio.eps}
+	\caption{Média dos preços}
+	\label{image:preco}
+	\end{figure}
+	\item Número de jogos que foram publicados pela própria desenvolvedora que atendam aquele determinado perfil. A figura \ref{image:own} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{figuras/own_publisher.eps}
+	\caption{Número de jogos publicados pela propria desenvolvedora}
+	\label{image:own}
+	\end{figure}
+	\item Número de jogos que foram publicado por outra empresa que atendam aquele determinado perfil. A figura \ref{image:another} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{figuras/another_publisher.eps}
+	\caption{Número de jogos publicados por outra empresa}
+	\label{image:another}
+	\end{figure}
+	\item Gráfico que compara os números de jogos que foram publicados pela desenvolvedora pelo números de jogos que foram publicados por outra empresa por ano. A figura \ref{image:anotherxown} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{figuras/anotherxown.eps}
+	\caption{Outra Publicadora x Própria Desenvolvedora}
+	\label{image:anotherxown}
+	\end{figure}
 	\item Tabela de quantos jogos daquele determinado perfil atingiram um número N de donos e sua porcentagem. A representação desta tabela fica evidenciada pela tabela \ref{table:num_donos}.
 	\item Tabela de quantos jogos daquele determinado perfil atingiram um número N de avaliações positivas e sua porcentagem. A representação desta tabela fica evidenciada pela tabela \ref{table:avaliacao}
-	\item Gráfico de desenvolvedoras por número de jogos desenvolvidos.
-	\item Gráfico de linguangens suportados por número de jogos que a suportam.
+	\item Gráfico de desenvolvedoras por número de jogos desenvolvidos. A figura \ref{image:developers} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{figuras/developer.eps}
+	\caption{Desenvolvedoras x Número de Jogos}
+	\label{image:developers}
+	\end{figure}
+	\item Gráfico de linguangens suportados por número de jogos que a suportam. A figura \ref{image:languages} é uma representação da métrica.
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{figuras/language.eps}
+	\caption{Linguagens Suportados x Número de Jogos}
+	\label{image:languages}
+	\end{figure}
 \end{itemize}
 \begin{table}
 \centering
