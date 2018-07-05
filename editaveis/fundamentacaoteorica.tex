@@ -1,34 +1,11 @@
 \chapter[Fundamentação Teórica]{Fundamentação Teórica}
-Neste capitulo será abordado a fundamentação teórica para o entendimento do propósito da implementação do projeto. Nele são explicados o que é Game Analytics e Business Intelligence, também serão abordados softwares parecidos com o que será desenvolvido.
-\section{Game Analytics}
-O desenvolvimento de jogos hoje pode se mostrar como um grande desafio, e grande parte deste desafio se dá pelo fato do grande número de jogos publicados. Para auxiliar as desenvolvedoras a criarem jogos eficientemente foram criados várias ferramentas e técnicas, um destes métodos é o analytics.
-
-Analytics é o processo de descobrir e comunicar padrões em dados, solucionando problemas de negócios ou suportar decisões de gerenciamento de empresas. Está metodologia possui seus fundamentos em mineração de dados, na matemática, estatística, programação e operações de busca, como também na visualização dos dados, de forma a comunicar padrões relevantes. Vale mencionar que o analytics não é apenas perguntar e relatar dados de BI, e sim análises atual daqueles dados\cite{analytics}. 
-
-Game analytics é uma aplicação do analytics para o contexto de desenvolvimento de jogos\cite{game_analytics}. Um dos maiores benefícios em utilizar o game analytics é o suporte na hora de fazer decisões em todos os níveis e áreas organizacionais. Este método é direcionado tanto como a análise de um jogo com um produto, tanto como a análise de um jogo como projeto.
-
-A aplicação padrão do game analytics é na hora de informar o GUR. GUR é a aplicação de várias técnicas e metodologias para avaliar a maneira na qual os jogadores jogam, e o nível de interação entre o jogador e o jogo. Vale mencionar que game analytics não é só GUR, já que o GUR é focado nos dados obtidos a partir dos usuários, já o game analytics considera todos os tipo de dados obtidos no desenvolvimento do jogo.
-\subsection{Telemetria}
-Telemetria são os dados obtidos à distância, geralmente digitais, porém qualquer dado transmitido à distância e telemetria. No contexto de jogos, telemetria seria algum jogo transmitindo dados sobre a interação do jogador com o jogo.
-
-Telemetria de jogos é o termo utilizado para qualquer dado obtidos a distância que pertence durante o desenvolvimento ou evolução de um jogo, e isto inclui o monitoramento e análise de: servidores, dispositivos celulares e comportamento dos usuários. A fonte que produz mais dados por telemetrias, são os de usuário, por exemplo, interação com jogos, comportamento de compra e interações com outros jogadores ou aplicativos\cite{telemetry}.
-\subsection{Game Metrics}
-Em sua forma pura, os dados obtidos a partir da telemetria, não são de muito auxílio, por isso estes dados devem ser transformado em várias métricas interpretativas, como: o número de jogadores ativos por dia, bugs arrumados por semana, entre outros. Essas métricas são chamadas de game metrics. Game metrics possuem os mesmo potencial que outras fontes de BI. Game metrics geralmente são definidas como um medição quantitativa de um ou mais atributos, de um ou mais objetos que operem no contexto de um jogo.
-
-Métricas podem ser variáveis ou  agregações mais complexas, como a soma de várias variáveis, em outras palavras as métricas podem ser simples variáveis que geram uma análise básica, ou a combinação de várias variáveis para gerar uma análise mais complexa e completa. Métricas que não estão relacionadas diretamente ao jogo, são chamadas de métricas de negócios. Durante a utilização do game analytics é essencial a distinção entre as métricas de negócio e as game metrics.
-
-As game metrics foram categorizadas em três tipos por Mellon\cite{game_metrics}, ou seja, as game metrics podem ser definidas como:
-\begin{itemize}
-	\item \textbf{Métricas de usuário}: São métricas relacionadas aos usuários que jogam aquele jogo, pela perspectiva de jogadores, ou de clientes. A perspectiva de cliente é utilizada quando as métricas são relacionadas a receita. A perspectiva de jogador é utilizada para investigar como é a interação das pessoas com o sistema do jogo e seus componentes.
-	\item \textbf{Métricas de performance}: São métricas relacionadas a performance da tecnologia e arquitetura utilizada no jogo, muito relevantes para jogos onlines. Essas métricas geralmente são utilizadas no monitoramento dos impactos causado por alguma atualização no jogo.
-	\item \textbf{Métricas de processo}: São métricas relacionadas ao processo de desenvolvimento de jogos. Similares as métricas de performance, são utilizadas para gerenciar e monitorar métodos que foram adotados, ou que foram adotados na hora do desenvolvimento do jogo. 
-\end{itemize}
-\section{Business Intelligence}
+Neste capitulo será abordada a fundamentação teórica para o entendimento do propósito da implementação do projeto. Nele são explicados os conceitos de \textit{game analytivs} e \textit{business intelligence} e também serão abordados softwares parecidos com o que será desenvolvido.
+\section{\textit{Business Intelligence}}
 No decorrer dos anos houve uma grande mudança em relação a criação, coleta e do uso de dados. Enquanto houve uma grande evolução na maneira que esses dados eram gerenciados, sempre houve um desejo de extrair valores de negócios nas grandes pilhas de dados, que são capturadas hoje em diversas fontes, sejam elas estruturas de dados ou arquivos.
 
 Os resultados da análise destas pilhas de dados e da criação de conhecimentos sobre esta análise, criou-se uma vantagem no mercado de negócios inimagináveis. Com esse conhecimento foi possível criar políticas de escolhas de ações para negócios em diferentes cenários. A exposição e exploração destes conhecimento é apenas uma das vantagens do uso de BI.
 
-Uma das maiores vantagens do uso do BI está na otimização do processo de tomadas de decisão, pois para cada processo de negócios é associado a sua performance, e num mundo perfeito cada escolha deve ser a mais otimizada, ou seja, a que têm a melhor performance\cite{business_intelligence}.
+Uma das maiores vantagens do uso do BI está na otimização do processo de tomadas de decisão, pois para cada processo de negócios é associado a sua performance, e num mundo perfeito cada escolha deve ser a mais otimizada, ou seja, a que têm a melhor performance \cite{business_intelligence}.
 
 A utilização de BI no âmbito de trabalho apresenta uma evolução na performance nas seguintes dimensões de negócio:
 \begin{itemize}
@@ -37,49 +14,47 @@ A utilização de BI no âmbito de trabalho apresenta uma evolução na performa
 		\item No valor de confiança, como maior satisfação do cliente, funcionário ou fornecedor, assim como aumento na confiança de previsões, consistência operacional e relatórios gerenciais, reduções no tempo gasto com “paralisia de análise” e melhor resultados de decisões.
 		\item No valor de risco associado com a uma melhor visibilidade da exposição do crédito, confiança no investimentos em capitais e conformidade auditável com a jurisdição e normas e regulamentos da indústria.
 \end{itemize}
-The Data Warehousing Institute\cite{tdwi}, uma instituição especializada na educação e treinamento em armazenamento de dados, define que BI é os processos, as tecnologias e as ferramentas necessárias para transformar dados em informação, informação em conhecimento e conhecimento em planos que dirigem rentáveis planos de negócios, ou seja BI engloba armazenamento de dados, ferramentas de análiticas e gestao de informação/conhecimento. 
+The Data Warehousing Institute \cite{tdwi}, uma instituição especializada na educação e treinamento em armazenamento de dados, define que BI é os processos, as tecnologias e as ferramentas necessárias para transformar dados em informação, informação em conhecimento e conhecimento em planos que dirigem rentáveis planos de negócios, ou seja BI engloba armazenamento de dados, ferramentas de análiticas e gestao de informação/conhecimento. 
 
-Business intelligence geralmente considerar as informações dos dados como ativos, por isso, pode-se valer a pena examinar o uso de informações no contexto de como o valor é criado dentro de uma organização. Para isso existem três tipos diferentes de perspectivas, sendo elas:
+\textit{Business intelligence} geralmente considerar as informações dos dados como ativos, por isso, pode-se valer a pena examinar o uso de informações no contexto de como o valor é criado dentro de uma organização. Para isso existem três tipos diferentes de perspectivas, sendo elas:
 \begin{itemize}
-		\item \textbf{Perspectiva funcional}: Neste tipo de perspectiva, os processos focam nas tarefas relacionadas a algum tipo particular de negócio, como vendas, marketing, entre outros. Processos funcionais confiam nos dados que operam dentros dos padrões de atividades comerciais.
+		\item \textbf{Perspectiva funcional}: Neste tipo de perspectiva, os processos focam nas tarefas relacionadas a algum tipo particular de negócio, como vendas, \textit{marketing}, entre outros. Processos funcionais confiam nos dados que operam dentros dos padrões de atividades comerciais.
 		\item \textbf{Perspectiva interfuncional}: Como a maioria das empresas funcionam como um aglomerado de processos funcionais, e isto reflete em informações mais complexas. Para esta perspectiva a atividade foi um sucesso quando todas as tarefas foram completadas. Pela sua própria natureza, os processos envolvidos compartilham informações em diferentes funções, e o sucesso é medido tanto em termos de conclusão bem-sucedida, bem como as características do desempenho geral
 		\item \textbf{Perspectiva empresarial}: Num ponto de vista organizacional e observando as características de desempenho dos processos interfuncionais, pode-se informar arquitetos empresariais e analistas de negócios maneiras na qual a organização pode mudar e melhorar o jeito que as coisas são feitas. Neste ponto de vista, o dado não é mais usado apenas para executar negócios, dados são utilizados para melhorar os negócios
 \end{itemize}
-\section{Análise de Ferramentas}
-\subsection{Banco de Dados}
-A ferramenta de banco de dados é responsável pelo armazenamento dos dados extraídos dos logs, no contexto desse projeto, este banco deverá armazenar os dados de todos os jogos disponibilizados pela API da Steam.
-\subsubsection*{PostgreSQL}
-Postgre é uma ferramenta open-source de banco de dados que utiliza a linguagem SQL em conjunto com outras funcionalidades que guardam e manipulam os mais complicados dos dados. Postgre é uma ferramenta antiga tendo sua origem datada no ano de 1986\cite{postgresql}.
+\section{\textit{Game Analytics}}
+O desenvolvimento de jogos hoje pode se mostrar como um grande desafio, e grande parte deste desafio se dá pelo fato do grande número de jogos publicados. Para auxiliar as desenvolvedoras a criarem jogos eficientemente foram criados várias ferramentas e técnicas, um destes métodos é o \textit{analytics}.
 
-Postgre é uma ferramenta que possui muitas funcionalidades com o intuito de ajudar desenvolvedores, administradores para manter a integridade dos dados e criação de sistema com tolerância a falhas.
-\subsubsection*{Elasticsearch}
-Elasticsearch é uma ferramenta open-source, desenvolvida pela Elastic, de análise e busca RESTful capaz de resolver um grande número de casos. É a parte principal de Elastic Stack, servindo como um centro onde armazena os dados\cite{elasticsearch}.
+Analytics é o processo de descobrir e comunicar padrões em dados, solucionando problemas de negócios ou suportar decisões de gerenciamento de empresas. Está metodologia possui seus fundamentos em mineração de dados, na matemática, estatística, programação e operações de busca, como também na visualização dos dados, de forma a comunicar padrões relevantes. Vale mencionar que o \textit{analytics} não é apenas perguntar e relatar dados de BI, e sim análises atual daqueles dados \cite{analytics}. 
 
-Elasticsearch suporta qualquer tipo de dado, além de agregar grande quantidades de dados para se ter uma visão melhor. Entre suas características as que mais se destacam são sua rapidez de busca, capacidade de detecção de falhas, múltiplos tipos de dados e suporte a múltiplas linguagens de programação.
-\subsection{Extração de Dados}
-A ferramenta de extração de dados é responsável pela extração dos dados dos logs, além de ter que fazer a comunicação com o banco de dados. Essa ferramenta deverá extrair os dados das APIs que serão utilizadas, manipulá-los e inserir no banco de dados.
-\subsubsection*{Logstash}
-Logstash é a ferramenta de extração de dados, desenvolvida pela Elastic, ele faz parte de Elastic Stack em conjunto com o Elasticsearch. Entre as características as que mais destacam são sua capacidade de conseguir extrair qualquer tipo de dado, além de permitir a criação de filtros para transformar e manipular os dados extraídos e também permite uma gama de outputs para onde o dado será enviado\cite{logstash}.
-\subsubsection*{Owner}
-Outra opção de extração de dados e a criação de um software específico para a plataforma. Este software seria criado na linguagem Ruby que também possui ligação com o Elasticsearch. As vantagens desse tipo de software seria que poderia ser implementado um arquitetura de plugins, assim futuramente, outros tipos de dados seriam aceitos na plataforma, além de que caso futuramente seja necessário a mudança do banco de dados, a adaptação para o novo banco seria menos custosa.
-\subsection{Frequência dos Dados}
-A ferramenta da frequência de dados, será mais um auxiliar na hora da extração de dados. Como será extraídos dados que possuem uma taxa de modificação muito grande, é necessário utilizar uma ferramenta que crie rotinas para essa extração.
-\subsubsection*{Cronjob}
-Cron job é uma ferramenta de agendamento que permite controlar tarefas a serem executadas em tempos pré-configurados. Através dela é possível configurar tarefas automáticas, isso quer dizer que, você pode definir rotinas a serem executadas em um horário específico. Cron jobs são configurados manualmente pelo terminal, podendo serem configurados para atualizações por minutos, horas, dias (do mês ou da semana) e meses
-\subsubsection*{Whenever}
-Whenever é uma gem do ruby, mais especificamente para o framework rails. Está gem utiliza os cron jobs como fundo para gerenciar e controlar tarefas a serem executadas em rotinas ou em um horário específico\cite{whenever}.
-\subsubsection*{Clockwork}
-Clockwork é uma gem do ruby. Está gem também utiliza os cron jobs, porém diferente de whenever, ele não exige que o software possua uma arquitetura MVC. Ele é utilizado especificamente para a criação de rotinas para tarefas que serão executadas automaticamente pela gem\cite{clockwork}.
-\section{Análise de Concorrentes}
-Nesta parte de documento é levantado os possíveis concorrentes, que possuem características ou objetivos parecidos com o projeto a ser desenvolvido. Os principais concorrentes são o Steam DB, uma ferramenta que disponibiliza informações sobre o banco de dados da Steam; a Steam Spy, uma plataforma web que disponibiliza informações sobre os jogos e suas vendas por região e o DFC Intelligence, uma ferramenta de pesquisa sobre o mercado de jogos.
+\textit{Game analytics} é uma aplicação do \textit{analytics} para o contexto de desenvolvimento de jogos \cite{game_analytics}. Um dos maiores benefícios em utilizar o \textit{game analytics} é o suporte na hora de fazer decisões em todos os níveis e áreas organizacionais. Este método é direcionado tanto como a análise de um jogo com um produto, tanto como a análise de um jogo como projeto.
+
+A aplicação padrão do \textit{game analytics} é na hora de informar o GUR. GUR é a aplicação de várias técnicas e metodologias para avaliar a maneira na qual os jogadores jogam, e o nível de interação entre o jogador e o jogo. Vale mencionar que \textit{game analytics} não é só GUR, já que o GUR é focado nos dados obtidos a partir dos usuários, já o \textit{game analytics} considera todos os tipo de dados obtidos no desenvolvimento do jogo.
+\subsection{Telemetria}
+Telemetria são os dados obtidos à distância, geralmente digitais, porém qualquer dado transmitido à distância e telemetria. No contexto de jogos, telemetria seria algum jogo transmitindo dados sobre a interação do jogador com o jogo.
+
+Telemetria de jogos é o termo utilizado para qualquer dado obtidos a distância que pertence durante o desenvolvimento ou evolução de um jogo, e isto inclui o monitoramento e análise de: servidores, dispositivos celulares e comportamento dos usuários. A fonte que produz mais dados por telemetrias, são os de usuário, por exemplo, interação com jogos, comportamento de compra e interações com outros jogadores ou aplicativos \cite{telemetry}.
+\subsection{\textit{Game Metrics}}
+Em sua forma pura, os dados obtidos a partir da telemetria, não são de muito auxílio, por isso estes dados devem ser transformado em várias métricas interpretativas, como: o número de jogadores ativos por dia, bugs arrumados por semana, entre outros. Essas métricas são chamadas de game metrics. \textit{Game metrics} possuem os mesmo potencial que outras fontes de BI. \textit{Game metrics} geralmente são definidas como um medição quantitativa de um ou mais atributos, de um ou mais objetos que operem no contexto de um jogo.
+
+Métricas podem ser variáveis ou  agregações mais complexas, como a soma de várias variáveis, em outras palavras as métricas podem ser simples variáveis que geram uma análise básica, ou a combinação de várias variáveis para gerar uma análise mais complexa e completa. Métricas que não estão relacionadas diretamente ao jogo, são chamadas de métricas de negócios. Durante a utilização do \textit{game analytics} é essencial a distinção entre as métricas de negócio e as textit{game metrics}.
+
+As game metrics foram categorizadas em três tipos por Mellon \cite{game_metrics}, ou seja, as \textit{game metrics} podem ser definidas como:
+\begin{itemize}
+	\item \textbf{Métricas de usuário}: São métricas relacionadas aos usuários que jogam aquele jogo, pela perspectiva de jogadores, ou de clientes. A perspectiva de cliente é utilizada quando as métricas são relacionadas a receita. A perspectiva de jogador é utilizada para investigar como é a interação das pessoas com o sistema do jogo e seus componentes.
+	\item \textbf{Métricas de performance}: São métricas relacionadas a performance da tecnologia e arquitetura utilizada no jogo, muito relevantes para jogos onlines. Essas métricas geralmente são utilizadas no monitoramento dos impactos causado por alguma atualização no jogo.
+	\item \textbf{Métricas de processo}: São métricas relacionadas ao processo de desenvolvimento de jogos. Similares as métricas de performance, são utilizadas para gerenciar e monitorar métodos que foram adotados, ou que foram adotados na hora do desenvolvimento do jogo. 
+\end{itemize}
+\section{Softwares Correlatos}
+Nesta parte de documento é levantado os softwares correlacionados, que possuem características ou objetivos parecidos com o software a ser desenvolvido. Os principais são o Steam DB, uma ferramenta que disponibiliza informações sobre o banco de dados da Steam; a Steam Spy, uma plataforma web que disponibiliza informações sobre os jogos e suas vendas por região e o DFC Intelligence, uma ferramenta de pesquisa sobre o mercado de jogos.
 \subsection{Steam DB}
-Steam DB é uma ferramenta open-source third-party com objetivo de dar uma melhor conhecimento sobre as aplicações e pacotes disponíveis no banco de dados da Steam\cite{steam_db}. Está ferramenta funciona de uma maneira onde é disponibilizado rankings de jogos e gráficos de um jogo para que o usuário tenha uma melhor visualização. Uma diferença crucial entre o Steam DB e o projeto proposto está no aspecto que o projeto não se especifica num jogo apenas, sendo mais genérico.Na tabela \ref{table:steam_db} podemos ver as vantagens e desvantagens do Steam DB.
+Steam DB é uma ferramenta \textit{open source} \textit{third-party} com objetivo de dar um melhor conhecimento sobre as aplicações e pacotes disponíveis no banco de dados da Steam \cite{steam_db}. Está ferramenta disponibiliza \textit{rankings} de jogos e gráficos de jogos para que o usuário tenha uma melhor visualização destes. Uma diferença crucial entre o Steam DB e o software proposto está no aspecto que o projeto não se especifica num jogo apenas. Na tabela \ref{table:steam_db} podemos ver as vantagens e desvantagens do Steam DB.
 \begin{table}
 \centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
 \hline \textbf{Vantagens} & \textbf{Desvantagens} \\
-\hline Open-source & Não possui política de contribuição \\
-\hline Rankings e gráficos & Demonstra informações de um jogo apenas não sendo genérico \\
+\hline \textit{Open source} & Não possui política de contribuição \\
+\hline \textit{Rankings} e gráficos & Demonstra informações de um jogo apenas \\
 \hline Gratuito & Precisa de login na Steam \\
 \hline Disponibiliza informações gerais de um usuários & \\
 \hline
@@ -88,28 +63,28 @@ Steam DB é uma ferramenta open-source third-party com objetivo de dar uma melho
 \label{table:steam_db}
 \end{table}
 \subsection{Steam Spy}
-Steam Spy é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de algum jogo ou vendas por região de determinado jogo de maneira eficiente e bonita\cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores indies, porém para se conseguir todos os dados disponíveis pela plataforma é preciso pagar. Uma diferença crucial entre o Steam Spy e o projeto é que o projeto está focado apenas no auxílio de desenvolvedores e também que será uma ferramenta open-source e gratuita. Na tabela \ref{table:steam_spy} podemos ver as vantagens e desvantagens do Steam Spy.
+Steam Spy é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de algum jogo ou vendas por região de determinado jogo, de maneira eficiente e bonita \cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores \textit{indies}, porém para se conseguir todos os dados disponíveis pela plataforma é preciso pagar por eles. Uma diferença crucial entre o Steam Spy e o software é que o software a ser implementado está focado apenas no auxílio de desenvolvedores e será uma ferramenta \textit{open source} e gratuita. Na tabela \ref{table:steam_spy} podemos ver as vantagens e desvantagens do Steam Spy.
 \begin{table}
 \centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
 \hline \textbf{Vantagens} & \textbf{Desvantagens} \\
 \hline Disponibiliza número de donos e vendas por região & Não é totalmente gratuito \\
 \hline Gráficos genéricos e confusos & Não apresenta métricas sobre os jogos \\
-\hline Disponibiliza API para seus dados & Não é open-source \\
+\hline Disponibiliza API para seus dados & Não é \textit{open source} \\
 \hline
 \end{tabular}
 \caption{Vantagens e Desvantagens Steam Spy}
 \label{table:steam_spy}
 \end{table}
 \subsection{DFC Intelligence}
-DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado. Para ser mais específico, uma desenvolvedora que utilize essa ferramenta receberá informações sobre o número de vendas de seus jogos, picos de vendas, regiões que mais venderam, entre outras. Também será disponibilizado gráficos e métricas que informam como está o mercado de jogos\cite{dfc_intelligence}. Uma diferença do projeto para o DFC Intelligence, além do fato do projeto ser gratuito, e que o projeto não irá focar apenas numa desenvolvedora e sim no mercado inteiro de jogos.Na tabela \ref{table:dfc_intelligence} podemos ver as vantagens e desvantagens do Steam DB.
+DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado. Para ser mais específico, uma desenvolvedora que utilize essa ferramenta receberá informações sobre o número de vendas de seus jogos, picos de vendas, regiões que mais venderam, entre outras. Também será disponibilizado gráficos e métricas que informam como está o mercado de jogos \cite{dfc_intelligence}. Uma diferença deste trabakgi para o DFC Intelligence, além do fato do projeto ser gratuito, e que o projeto não irá focar apenas numa desenvolvedora e sim no mercado inteiro de jogos. Na tabela \ref{table:dfc_intelligence} podemos ver as vantagens e desvantagens do Steam DB.
 \begin{table}
 \centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
 \hline \textbf{Vantagens} & \textbf{Desvantagens} \\
 \hline Disponibiliza informações sobre o mercado de jogos & Não é gratuita \\
 \hline Auxiliam desenvolvedores na hora da criação de um jogo & Não mostrar o mercado de jogos como um todo \\
-\hline & Não é open-source \\
+\hline & Não é \textit{open source} \\
 \hline & Foca apenas nos jogos de uma desenvolvedora \\
 \hline
 \end{tabular}

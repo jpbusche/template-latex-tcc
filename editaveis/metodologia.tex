@@ -1,9 +1,9 @@
 \chapter[Metodologia]{Metodologia}
 A metodologia escolhida para o desenvolvimento do projeto será a metodologia ágil, mais especificamente será utilizado o Kanban. A escolha dessa metodologia se dá pelas seguintes características: o projeto será desenvolvido de maneira incremental, ou seja, ele poderá ser modificado no decorrer da implementação; a equipe consiste em apenas uma pessoa, o que descarta a possibilidade de utilizar o Scrum ou XP; o escopo do projeto será divididos em tarefas, e a utilização do Kanban facilita no descobrimento de gargalos.
 
-A metodologia Kanban surgiu no Japão com o TPS\cite{tps} para controlar a fabricação de automóveis e foi inserida no meio de desenvolvimento de software no ano de 2007. Kanban é um termo japonês para sinal visual, uma das grandes características dessa metodologia é evidenciar os problemas existentes no processo. 
+A metodologia Kanban surgiu no Japão com o TPS \cite{tps} para controlar a fabricação de automóveis e foi inserida no meio de desenvolvimento de software no ano de 2007. Kanban é um termo japonês para sinal visual, uma das grandes características dessa metodologia é evidenciar os problemas existentes no processo. 
 
-A metodologia ágil surgiu no ano de 2001, com a reunião de especialistas em processos de desenvolvimento de software para discutir maneiras de melhorar o desempenho em projetos, com isso foi criado o Manifesto Ágil\cite{agil}. Uma das características das metodologias ágeis são sua capacidade de adaptar a novos fatores durante o desenvolvimento do projeto, ao invés de tentar prever o que pode acontecer e o que não pode
+A metodologia ágil surgiu no ano de 2001, com a reunião de especialistas em processos de desenvolvimento de software para discutir maneiras de melhorar o desempenho em projetos, com isso foi criado o Manifesto Ágil \cite{agil}. Uma das características das metodologias ágeis são sua capacidade de adaptar a novos fatores durante o desenvolvimento do projeto, ao invés de tentar prever o que pode acontecer e o que não pode
 \section{Requisitos}
 Os requisitos do projeto serão classificados em três níveis de hierarquia:  épicos, features e user stories. Os épicos são compostos por features e representam macro entregáveis do projeto, geralmente são descritos como o nível mais abstrato. As features são agrupamentos de user stories e representam funcionalidades do sistema. User stories são pequenas partes de uma funcionalidade do sistema e que serão implementadas, user stories também podem ser classificadas como technical stories, estas technical stories representam atividades que não agregam muito valor ao cliente, porém elas agregam numa melhora interna no software.
 
@@ -26,6 +26,32 @@ No contexto do projeto as features serão equivalentes às milestones, e as stor
 \caption{Matriz Rastreabilidade Épico 3}
 \label{image:ep03}
 \end{figure}
+\section{Análise de Ferramentas}
+Nesta seção são feito estudos sobre as possíveis ferramentas que poderão ser utilizadas durante o desenvolvimento do trabalho.
+\subsection{Banco de Dados}
+A ferramenta de banco de dados é responsável pelo armazenamento dos dados extraídos dos logs. No contexto desse projeto, este banco deverá armazenar os dados de todos os jogos disponibilizados pela API da Steam.
+\subsubsection*{PostgreSQL}
+Postgre é uma ferramenta \textit{open source} de banco de dados que utiliza a linguagem SQL em conjunto com outras funcionalidades que guardam e manipulam os mais complicados dos dados. Postgre é uma ferramenta antiga tendo sua origem datada no ano de 1986 \cite{postgresql}.
+
+Postgre é uma ferramenta que possui funcionalidades que auxiliam desenvolvedores e administradores a manter a integridade dos dados e criar sistemas com tolerância a falhas.
+\subsubsection*{Elasticsearch}
+Elasticsearch é uma ferramenta \textit{open source}, desenvolvida pela Elastic \footnote[1]{\url{https://www.elastic.co/}}, de análise e busca REST\footnote[2]{REST é uma abstração da arquitetura da Web} capaz de resolver um grande número de casos. É a parte principal de Elastic Stack, servindo como um centro de armazenamento de dados \cite{elasticsearch}.
+
+Elasticsearch suporta qualquer tipo de dado, além de agregar grande quantidades de dados para se ter uma visão melhor. Entre suas características as que mais se destacam são sua rapidez de busca, capacidade de detecção de falhas, múltiplos tipos de dados e suporte a múltiplas linguagens de programação.
+\subsection{Extração de Dados}
+A ferramenta de extração de dados é responsável pela extração dos dados dos logs, além de ter que fazer a comunicação com o banco de dados. Essa ferramenta deverá extrair os dados das APIs que serão utilizadas, manipulá-los e inserir no banco de dados.
+\subsubsection*{Logstash}
+Logstash é a ferramenta de extração de dados, desenvolvida pela Elastic, ele faz parte de Elastic Stack em conjunto com o Elasticsearch. Entre as características as que mais destacam são sua capacidade de conseguir extrair qualquer tipo de dado, além de permitir a criação de filtros para transformar e manipular os dados extraídos e também permite uma gama de outputs para onde o dado será enviado \cite{logstash}.
+\subsubsection*{Owner}
+Outra opção de extração de dados é a criação de um software específico para a plataforma. Este software seria criado na linguagem Ruby\footnote[3]{\url{https://www.ruby-lang.org/pt/}} que também possui ligação com o Elasticsearch. As vantagens desse tipo de software seria a possível implementação de uma arquitetura de \textit{plugins}, de modo que outros tipos de dados seriam aceitos na plataforma, além de que, caso futuramente seja necessário a mudança do banco de dados, a adaptação para o novo banco seria menos custosa.
+\subsection{Frequência dos Dados}
+A ferramenta da frequência de dados é mais um auxiliar na hora da extração de dados. Como serão extraídos dados que possuem uma taxa de modificação grande, é necessário utilizar uma ferramenta que crie rotinas para essa extração.
+\subsubsection*{\textit{Cronjob}}
+\textit{Cronjob}\footnote[4]{\url{https://cron-job.org/en/}} é uma ferramenta de agendamento que permite controlar tarefas a serem executadas em tempos pré-configurados. Através dela é possível configurar tarefas automáticas a serem executadas em um horário específico. \textit{Cronjobs} são configurados manualmente pelo terminal, podendo serem configurados para atualizações por minutos, horas, dias (do mês ou da semana) e meses
+\subsubsection*{\textit{Whenever}}
+\textit{Whenever} é uma \textit{gem}\footnote[5]{Gems são como bibliotecas para a linguangem Ruby} do \textit{ruby}, mais especificamente para o \textit{framework} rails. Está \textit{gem} utiliza os \textit{cronjobs} como fundo para gerenciar e controlar tarefas a serem executadas em rotinas ou em um horário específico \cite{whenever}.
+\subsubsection*{\textit{Clockwork}}
+\textit{Clockwork} é uma \textit{gem} do \textit{ruby}. Está \textit{gem} também utiliza os \textit{cronjobs}, porém diferente de \textit{whenever}, ele não exige que o software possua uma arquitetura MVC\footnote[6]{É um padrão de arquitetura de software}. Ele é utilizado especificamente para a criação de rotinas para tarefas que serão executadas automaticamente pela \textit{gem} \cite{clockwork}.
 \section{Arquitetura do Projeto}
 A arquitetura do projeto é dividida principalmente em cinco partes, sendo elas: os logs, o software de extração, o banco de indexação, a API de consumo e a plataforma web. A ligação entre as partes e sua posição na arquitetura ficam evidenciado na figura \ref{image:arquitetura}.
 \begin{figure}
@@ -61,9 +87,9 @@ A plataforma web é o principal componente da arquitetura, pois é nele que ser�
 \section{Software Extração}
 O software de extração é a primeira parte propriamente dita que faz parte do projeto, nela é onde será feito a extração dos dados dos logs, a manipulação necessária e a inserção dos dados no banco de indexação numa determinada frequência. Primeiramente iremos falar sobre os logs. Logs, como já citados na arquitetura do projeto, são os arquivos que contém os dados que serão inseridos no banco de indexação. No escopo inicial serão utilizados três logs, sendo eles:
 \begin{itemize}
-	\item \textbf{Steam Web API}: É uma API REST disponibilizada pela Steamworks, ou seja, é uma API oficial da Steam\cite{steam_api}. Ela é uma API que possui tanto métodos públicos, tanto métodos privados. Os métodos públicos são abertos para qualquer pessoas visualizar, já os métodos privados é necessário uma chave de desenvolvedor cedido pela própria Steamworks. Para acessar seus dados é preciso, além da chave, a interface na qual aquele dados está guardado, o id do jogo, caso a informação seja de um jogo, ou do id do usuário, caso a informação seja de algum usuário.
+	\item \textbf{Steam Web API}: É uma API REST disponibilizada pela Steamworks, ou seja, é uma API oficial da Steam \cite{steam_api}. Ela é uma API que possui tanto métodos públicos, tanto métodos privados. Os métodos públicos são abertos para qualquer pessoas visualizar, já os métodos privados é necessário uma chave de desenvolvedor cedido pela própria Steamworks. Para acessar seus dados é preciso, além da chave, a interface na qual aquele dados está guardado, o id do jogo, caso a informação seja de um jogo, ou do id do usuário, caso a informação seja de algum usuário.
 	\item \textbf{Steam Store API}: É uma API REST disponibilizada pela Steam, que não possui uma página oficial para ela. Está API disponibiliza os dados dos jogos que estão guardados no banco de dados da Steam. Para acessar seus dados e preciso saber apenas o id do jogo, porém é possível passar filtros também.
-	\item \textbf{Steam Spy API}: É uma API REST disponibilizada pelo Steam Spy\cite{steam_spy}, ela é muito parecido com a Steam Store API, porém ela disponibilizada dados que apenas o Steam Spy possui, como o número de donos de um jogo ou o número de avaliações positivas e negativas de um jogo. Para acessar seus dados é preciso saber apenas o id do jogo, porém também é possível passar filtros.
+	\item \textbf{Steam Spy API}: É uma API REST disponibilizada pelo Steam Spy \cite{steam_spy}, ela é muito parecido com a Steam Store API, porém ela disponibilizada dados que apenas o Steam Spy possui, como o número de donos de um jogo ou o número de avaliações positivas e negativas de um jogo. Para acessar seus dados é preciso saber apenas o id do jogo, porém também é possível passar filtros.
 \end{itemize}
 Com os logs definidos, é preciso saber quais dados dos logs serão inseridos no banco de indexação, pois muitas APIs possuem dados repetidos e nem todo os dados são interessante para se manter. Com isso os principais dados que serão mantidos no banco de indexação são:
 \begin{itemize}
@@ -83,7 +109,7 @@ Com os logs definidos, é preciso saber quais dados dos logs serão inseridos no
 \end{itemize}
 Com os dados definidos, é preciso definir como será feito o software de extração. O software de extração será feito utilizando a linguagem de programação Ruby, com integração com o Elasticsearch. Para a atualização frequente dos dados será utilizado a gem Clockwork. A escolha do Ruby como linguagem de programação, se justifica pelo fato, que o integrante do projeto possui mais familiaridade com a linguagem.
 \section{API de Consumo}
-A API de consumo será responsável por consumir o banco de indexação, e partir dos dados gerar links RESTFUL para que qualquer aplicação possa utilizá-la. A API deverá atualizar seus links com a mesma frequência com o qual o software de extração atualiza o banco de indexação. Está API será desenvolvida utilizando o framework Ruby on Rails, isto se justifica pelo fato, que o integrante do projeto possui mais familiaridade com o framework.
+A API de consumo será responsável por consumir o banco de indexação, e partir dos dados gerar links REST para que qualquer aplicação possa utilizá-la. A API deverá atualizar seus links com a mesma frequência com o qual o software de extração atualiza o banco de indexação. Está API será desenvolvida utilizando o framework Ruby on Rails, isto se justifica pelo fato, que o integrante do projeto possui mais familiaridade com o framework.
 
 A API será dividido em duas frentes principais, uma frente irá gerar links para pegar informações dos jogos, e a outro irá gerar links onde serão gerados rankings de jogos.
 
