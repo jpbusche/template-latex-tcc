@@ -1,8 +1,8 @@
 \chapter[Resultados Obtidos]{Resultados Obtidos}
 Neste capítulo serão exibidos os resultados obtidos nesta primeira parte do projeto. Será falado dos resultados sobre o software de extração e da plataforma web.
 \section{Software de Extração}
-Na parte de extração dos dados foram criados dois codigos teste. O código \ref{code:handler} representa o uso da gem clockwork como um handler de frequência, o resultado obtido pelo uso do código pode ser visto na figura \ref{image:result_handler}. Já o código \ref{code:plugin} representa uma estrutura inicial de um plugin, nele é feito a conexão com o Elasticsearch, extraídos os dados de uma API, manipula esses dados e inserir no Elasticsearch.
-\begin{lstlisting}[language={Ruby}, caption = {Código do Handler}, label = {code:handler}]
+Na parte de extração dos dados foram criados dois codigos teste. O código \ref{code:handler} representa o uso da \textit{gem} \textit{clockwork} como um \textit{handler} de frequência, o resultado obtido pelo uso do código pode ser visto na figura \ref{image:result_handler}. Já o código \ref{code:plugin} representa uma estrutura inicial de um \textit{plugin}, nele é feito a conexão com o Elasticsearch, extraídos os dados de uma API, manipula esses dados e inserir no Elasticsearch.
+\begin{lstlisting}[language={Ruby}, caption = {Código do \textit{Handler}}, label = {code:handler}]
 require 'clockwork'
 require 'active_support/time'
 
@@ -31,10 +31,10 @@ end
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{figuras/result_handler.eps}
-\caption{Resultado da Compilação do Handler}
+\caption{Resultado da Compilação do \textit{Handler}}
 \label{image:result_handler}
 \end{figure}
-\begin{lstlisting}[language={Ruby}, caption = {Código do Plugin}, label = {code:plugin}]
+\begin{lstlisting}[language={Ruby}, caption = {Código do \textit{Plugin}}, label = {code:plugin}]
 require 'httparty'
 require 'elasticsearch'
 
@@ -65,7 +65,7 @@ client.update index: 'test', type: 'game', id: 730, body: game.to_json
 \end{lstlisting}
 No decorrer do desenvolvimento da primeira parte do projeto, houve um mudança na política de privacidade da Steam, e isso modificou alguns dados que seriam extraídos, o principal foi o de número de donos. Antes de mudança a API do Steam Spy, providenciava um número quase exato do número de donos, após a mudança, agora a API providência apenas uma média estimada do número de donos. Isto alterar o projeto, já que agora não e possível mais fazer uma métrica exata da média de donos daquele gênero.
 \section{Plataforma Web}
-Para a plataforma web foi criado um protótipo que exibe como será a visualização dos dados, é também como será o fluxo dentro da plataforma. A figura \ref{image:inicial} é a tela inicial da plataforma, dela pode-se ir para as métricas ou para a aba sobre. A figura \ref{image:metrics} é a tela onde será apresentada as métricas, nesta página o usuário poderá definir os gêneros e as categorias que definirão o perfil do jogo. A figura \ref{image:rankings} é a tela quando o usuário clica na aba rankings, nesta aba serão exibidas os rankings de jogos daquele determinado perfil. A figura \ref{image:sugestoes} é a tela quando o usuário clica na aba sugestões, nesta aba serão exibidas algumas sugestões para a evolução daquele perfil.
+Para a plataforma web foi criado um protótipo que exibe como será a visualização dos dados, é também como será o fluxo dentro da plataforma. A figura \ref{image:inicial} é a tela inicial da plataforma, dela pode-se ir para as métricas ou para a aba sobre. A figura \ref{image:metrics} é a tela onde será apresentada as métricas, nesta página o usuário poderá definir os gêneros e as categorias que definirão o perfil do jogo. A figura \ref{image:rankings} é a tela quando o usuário clica na aba \textit{rankings}, nesta aba serão exibidas os \textit{rankings} de jogos daquele determinado perfil. A figura \ref{image:sugestoes} é a tela quando o usuário clica na aba sugestões, nesta aba serão exibidas algumas sugestões para a evolução daquele perfil.
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{figuras/tela_inicial.eps}
@@ -90,4 +90,4 @@ Para a plataforma web foi criado um protótipo que exibe como será a visualiza�
 \caption{Tela de Sugestões}
 \label{image:sugestoes}
 \end{figure}
-O protótipo poderá ser visualizado no seguinte link: \url{https://marvelapp.com/3209ad6}.
+O protótipo poderá ser visualizado no seguinte \textit{link}: \url{https://marvelapp.com/3209ad6}.
