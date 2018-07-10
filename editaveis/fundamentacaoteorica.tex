@@ -3,7 +3,7 @@ Neste capitulo será abordada a fundamentação teórica para o entendimento do 
 \section{\textit{Business Intelligence}}
 No decorrer dos anos houve uma grande mudança em relação a criação, coleta e do uso de dados. Enquanto houve uma grande evolução na maneira que esses dados eram gerenciados, sempre houve um desejo de extrair valores de negócios nas grandes pilhas de dados, que são capturadas hoje em diversas fontes, sejam elas estruturas de dados ou arquivos.
 
-Os resultados da análise destas pilhas de dados e da criação de conhecimentos sobre esta análise, criou-se uma vantagem no mercado de negócios inimagináveis. Com esse conhecimento foi possível criar políticas de escolhas de ações para negócios em diferentes cenários. A exposição e exploração destes conhecimento é apenas uma das vantagens do uso de BI.
+Os resultados da análise destas pilhas de dados e da criação de conhecimentos sobre esta análise, criou-se uma vantagem no mercado de negócios inimagináveis. Com esse conhecimento foi possível criar políticas de escolhas de ações para negócios em diferentes cenários. A exposição e exploração destes conhecimento é apenas uma das vantagens do uso de BI (\textit{Business Intelligence}).
 
 Uma das maiores vantagens do uso do BI está na otimização do processo de tomadas de decisão, pois para cada processo de negócios é associado a sua performance, e num mundo perfeito cada escolha deve ser a mais otimizada, ou seja, a que têm a melhor performance \cite{business_intelligence}.
 
@@ -29,7 +29,7 @@ O desenvolvimento de jogos hoje pode se mostrar como um grande desafio, e grande
 
 \textit{Game analytics} é uma aplicação do \textit{analytics} para o contexto de desenvolvimento de jogos \cite{game_analytics}. Um dos maiores benefícios em utilizar o \textit{game analytics} é o suporte na hora de fazer decisões em todos os níveis e áreas organizacionais. Este método é direcionado tanto como a análise de um jogo com um produto, tanto como a análise de um jogo como projeto.
 
-A aplicação padrão do \textit{game analytics} é na hora de informar o GUR. GUR é a aplicação de várias técnicas e metodologias para avaliar a maneira na qual os jogadores jogam, e o nível de interação entre o jogador e o jogo. Vale mencionar que \textit{game analytics} não é só GUR, já que o GUR é focado nos dados obtidos a partir dos usuários, já o \textit{game analytics} considera todos os tipo de dados obtidos no desenvolvimento do jogo.
+A aplicação padrão do \textit{game analytics} é na hora de informar o GUR (\textit{Game User Research}). GUR é a aplicação de várias técnicas e metodologias para avaliar a maneira na qual os jogadores jogam, e o nível de interação entre o jogador e o jogo. Vale mencionar que \textit{game analytics} não é só GUR, já que o GUR é focado nos dados obtidos a partir dos usuários, já o \textit{game analytics} considera todos os tipo de dados obtidos no desenvolvimento do jogo.
 \subsection{Telemetria}
 Telemetria são os dados obtidos à distância, geralmente digitais, porém qualquer dado transmitido à distância e telemetria. No contexto de jogos, telemetria seria algum jogo transmitindo dados sobre a interação do jogador com o jogo.
 
@@ -37,7 +37,7 @@ Telemetria de jogos é o termo utilizado para qualquer dado obtidos a distância
 \subsection{\textit{Game Metrics}}
 Em sua forma pura, os dados obtidos a partir da telemetria, não são de muito auxílio, por isso estes dados devem ser transformado em várias métricas interpretativas, como: o número de jogadores ativos por dia, bugs arrumados por semana, entre outros. Essas métricas são chamadas de game metrics. \textit{Game metrics} possuem os mesmo potencial que outras fontes de BI. \textit{Game metrics} geralmente são definidas como um medição quantitativa de um ou mais atributos, de um ou mais objetos que operem no contexto de um jogo.
 
-Métricas podem ser variáveis ou  agregações mais complexas, como a soma de várias variáveis, em outras palavras as métricas podem ser simples variáveis que geram uma análise básica, ou a combinação de várias variáveis para gerar uma análise mais complexa e completa. Métricas que não estão relacionadas diretamente ao jogo, são chamadas de métricas de negócios. Durante a utilização do \textit{game analytics} é essencial a distinção entre as métricas de negócio e as textit{game metrics}.
+Métricas podem ser variáveis ou  agregações mais complexas, como a soma de várias variáveis, em outras palavras as métricas podem ser simples variáveis que geram uma análise básica, ou a combinação de várias variáveis para gerar uma análise mais complexa e completa. Métricas que não estão relacionadas diretamente ao jogo, são chamadas de métricas de negócios. Durante a utilização do \textit{game analytics} é essencial a distinção entre as métricas de negócio e as \textit{game metrics}.
 
 As game metrics foram categorizadas em três tipos por Mellon \cite{game_metrics}, ou seja, as \textit{game metrics} podem ser definidas como:
 \begin{itemize}
@@ -46,24 +46,24 @@ As game metrics foram categorizadas em três tipos por Mellon \cite{game_metrics
 	\item \textbf{Métricas de processo}: São métricas relacionadas ao processo de desenvolvimento de jogos. Similares as métricas de performance, são utilizadas para gerenciar e monitorar métodos que foram adotados, ou que foram adotados na hora do desenvolvimento do jogo. 
 \end{itemize}
 \section{Softwares Correlatos}
-Nesta parte de documento é levantado os softwares correlacionados, que possuem características ou objetivos parecidos com o software a ser desenvolvido. Os principais são o Steam DB, uma ferramenta que disponibiliza informações sobre o banco de dados da Steam; a Steam Spy, uma plataforma web que disponibiliza informações sobre os jogos e suas vendas por região e o DFC Intelligence, uma ferramenta de pesquisa sobre o mercado de jogos.
+Nesta parte de documento é levantado os softwares correlacionados, que possuem características ou objetivos parecidos com a plataforma a ser desenvolvido. Os principais são o Steam DB, uma ferramenta que disponibiliza informações sobre o banco de dados da Steam; a Steam Spy, uma plataforma web que disponibiliza informações sobre os jogos e suas vendas por região e o DFC Intelligence, uma ferramenta de pesquisa sobre o mercado de jogos.
 \subsection{Steam DB}
-Steam DB é uma ferramenta \textit{open source} \textit{third-party} com objetivo de dar um melhor conhecimento sobre as aplicações e pacotes disponíveis no banco de dados da Steam \cite{steam_db}. Está ferramenta disponibiliza \textit{rankings} de jogos e gráficos de jogos para que o usuário tenha uma melhor visualização destes. Uma diferença crucial entre o Steam DB e o software proposto está no aspecto que o projeto não se especifica num jogo apenas. Na tabela \ref{table:steam_db} podemos ver as vantagens e desvantagens do Steam DB.
+Steam DB é uma ferramenta \textit{open source} \textit{third-party} com objetivo de dar um melhor conhecimento sobre os jogos e suas atualizações disponíveis no banco de dados da Steam \cite{steam_db}. Está ferramenta disponibiliza \textit{rankings} e gráficos de jogos para que o usuário tenha uma melhor visualização destes. Atualmente o Steam DB apresenta métricas individuais de cada jogo, não oferencendo nenhuma maneira de agregação. Na tabela \ref{table:steam_db} podemos ver as vantagens e desvantagens do Steam DB.
 \begin{table}
 \centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
 \hline \textbf{Vantagens} & \textbf{Desvantagens} \\
 \hline \textit{Open source} & Não possui política de contribuição \\
-\hline \textit{Rankings} e gráficos & Demonstra informações de um jogo apenas \\
+\hline \textit{Rankings} e gráficos & Informações individuais de um jogo \\
 \hline Gratuito & Precisa de login na Steam \\
-\hline Disponibiliza informações gerais de um usuários & \\
+\hline Informações individuais de um usuário & \\
 \hline
 \end{tabular}
 \caption{Vantagens e Desvantagens Steam DB}
 \label{table:steam_db}
 \end{table}
 \subsection{Steam Spy}
-Steam Spy é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de algum jogo ou vendas por região de determinado jogo, de maneira eficiente e bonita \cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores \textit{indies}, porém para se conseguir todos os dados disponíveis pela plataforma é preciso pagar por eles. Uma diferença crucial entre o Steam Spy e o software é que o software a ser implementado está focado apenas no auxílio de desenvolvedores e será uma ferramenta \textit{open source} e gratuita. Na tabela \ref{table:steam_spy} podemos ver as vantagens e desvantagens do Steam Spy.
+Steam Spy é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de algum jogo ou vendas por região de determinado jogo \cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores \textit{indies}, porém para se conseguir todos os dados disponíveis pela plataforma é preciso pagar por eles. Atualmente a Steam Spy para que o usuário possua total acesso aos dados dela, o usuário precisa pagar. Na tabela \ref{table:steam_spy} podemos ver as vantagens e desvantagens do Steam Spy.
 \begin{table}
 \centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
@@ -77,7 +77,7 @@ Steam Spy é uma plataforma Web que a partir de informações sobre os usuários
 \label{table:steam_spy}
 \end{table}
 \subsection{DFC Intelligence}
-DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado. Para ser mais específico, uma desenvolvedora que utilize essa ferramenta receberá informações sobre o número de vendas de seus jogos, picos de vendas, regiões que mais venderam, entre outras. Também será disponibilizado gráficos e métricas que informam como está o mercado de jogos \cite{dfc_intelligence}. Uma diferença deste trabakgi para o DFC Intelligence, além do fato do projeto ser gratuito, e que o projeto não irá focar apenas numa desenvolvedora e sim no mercado inteiro de jogos. Na tabela \ref{table:dfc_intelligence} podemos ver as vantagens e desvantagens do Steam DB.
+DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado. Desenvolvedoras que utilizem essa ferramenta receberão informações sobre o número de vendas de seus jogos, picos de vendas, regiões que mais venderam, entre outras. Também será disponibilizado gráficos e métricas que informam como está o mercado de jogos \cite{dfc_intelligence}. Atualmente a ferramenta DFC Intelligence é focada apenas nos jogos da desenvolvedora, que contratou seus serviços. Na tabela \ref{table:dfc_intelligence} podemos ver as vantagens e desvantagens do Steam DB.
 \begin{table}
 \centering
 \begin{tabular}{|p{7cm}|p{7cm}|}
