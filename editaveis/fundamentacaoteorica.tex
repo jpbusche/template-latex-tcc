@@ -1,5 +1,21 @@
 \chapter[Fundamentação Teórica]{Fundamentação Teórica}
-Neste capitulo será abordada a fundamentação teórica para o entendimento do propósito da implementação do projeto. Nele são explicados os conceitos de \textit{game analytivs} e \textit{business intelligence} e também serão abordados softwares parecidos com o que será desenvolvido.
+Neste capitulo será abordada a fundamentação teórica para o entendimento do propósito da implementação do projeto. Nele são explicados os conceitos de \textit{application programming interface}, \textit{business intelligence} e \textit{game analytics} e também serão abordados softwares parecidos com o que será desenvolvido.
+
+\section{\textit{Application Programming Interface}}
+A sigla API (\textit{Application Programming Interface}) é um conjunto de rotinas e padrões de programação para acesso a um aplicativo de software ou plataforma baseado na Web. A utilização destas rotinas servem principalmente para que softwares externos tenham acesso a funcionalidade de um produto, sem que esse tenha que envolver-se em detalhes da implementação \cite{api}.
+
+Para a utilização de APIs Webs existem várias arquiteturas que podem ser utilizadas a mais comum e a arquitetura REST (\textit{Representational State Transfer}), que define um conjunto de restrições e propriedades baseadas no HTTP (\textit{Hypertext Transfer Protocol}).
+\subsection{\textit{Representational State Transfer}}
+A sigla REST, originalmente, se referia a um conjunto de princípios de arquitetura, nos tempos atuais é utilizada no sentido mais amplo, descrevendo qualquer interface web que use XML (\textit{Extensible Markup Language}) e HTTP, sem as abstrações adicionais dos protocolos baseados em padrões de trocas de mensagem. De acordo com Fielding \cite{fielding} é possível projetar um sistema de serviços web com a arquitetura REST, completando que a própria \textit{World Wide Web}, utilizou REST como base para o desenvolvimento do protocolo HTTP.
+
+A arquitetura REST possui quatro princípios principais, sendo eles:
+\begin{itemize}
+	\item \textbf{Protocolo cliente/servidor sem estado}: cada mensagem HTTP contém toda a informação necessária para compreender o pedido.
+	\item \textbf{Operações bem definidas}: que se aplicam a todos os recursos de informações, as mais importantes são \textit{\textbf{POST}}, \textit{\textbf{GET}}, \textit{\textbf{PUT}} e \textit{\textbf{DELETE}}.
+	\item \textbf{Sintaxe universal}: para identificar os recursos, na arquitetura REST este recurso é direcionado pela sua URI(\textit{Uniform Resource Identifier}).
+	\item \textbf{Hipermídia}: para a informação da aplicação, como para as transições de estado da aplicação, normalmente são representados pelo HTTP e XML
+\end{itemize}
+
 \section{\textit{Business Intelligence}}
 No decorrer dos anos houve uma grande mudança em relação a criação, coleta e do uso de dados. Enquanto houve uma grande evolução na maneira que esses dados eram gerenciados, sempre houve um desejo de extrair valores de negócios nas grandes pilhas de dados, que são capturadas hoje em diversas fontes, sejam elas estruturas de dados ou arquivos.
 
@@ -22,6 +38,7 @@ The Data Warehousing Institute \cite{tdwi}, uma instituição especializada na e
 		\item \textbf{Perspectiva interfuncional}: Como a maioria das empresas funcionam como um aglomerado de processos funcionais, e isto reflete em informações mais complexas. Para esta perspectiva a atividade foi um sucesso quando todas as tarefas foram completadas. Pela sua própria natureza, os processos envolvidos compartilham informações em diferentes funções, e o sucesso é medido tanto em termos de conclusão bem-sucedida, bem como as características do desempenho geral
 		\item \textbf{Perspectiva empresarial}: Num ponto de vista organizacional e observando as características de desempenho dos processos interfuncionais, pode-se informar arquitetos empresariais e analistas de negócios maneiras na qual a organização pode mudar e melhorar o jeito que as coisas são feitas. Neste ponto de vista, o dado não é mais usado apenas para executar negócios, dados são utilizados para melhorar os negócios
 \end{itemize}
+
 \section{\textit{Game Analytics}}
 O desenvolvimento de jogos hoje pode se mostrar como um grande desafio, e grande parte deste desafio se dá pelo fato do grande número de jogos publicados. Para auxiliar as desenvolvedoras a criarem jogos eficientemente foram criados várias ferramentas e técnicas, um destes métodos é o \textit{analytics}.
 

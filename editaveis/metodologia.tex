@@ -10,7 +10,7 @@ Nesta seção são feito estudos sobre as ferramentas que serão utilizadas no d
 \subsection{Banco de Dados}
 A ferramenta de banco de dados é responsável pelo armazenamento dos dados extraídos das fontes de dados.
 \subsubsection*{Elasticsearch}
-Elasticsearch é uma ferramenta \textit{open source}, desenvolvida pela Elastic\footnote[1]{\url{https://www.elastic.co/}}, de análise e busca REST\footnote[2]{REST é uma abstração da arquitetura da Web} (\textit{Representational State Transfer}) capaz de resolver um grande número de casos. É a parte principal de Elastic Stack, servindo como um centro de armazenamento de dados \cite{elasticsearch}.
+Elasticsearch é uma ferramenta \textit{open source}, desenvolvida pela Elastic\footnote[1]{\url{https://www.elastic.co/}}, de análise e busca REST capaz de resolver um grande número de casos. É a parte principal de Elastic Stack, servindo como um centro de armazenamento de dados \cite{elasticsearch}.
 
 Elasticsearch suporta qualquer tipo de dado, além de agregar grande quantidades de dados para se ter uma visão melhor. Entre suas características as que mais se destacam são sua rapidez de busca, capacidade de detecção de falhas, múltiplos tipos de dados e suporte a múltiplas linguagens de programação.
 \subsection{Frequência na Extração dos Dados}
@@ -18,7 +18,7 @@ Esta ferramente será responsável pela criação de uma rotina na hora de extra
 \subsubsection*{Celery}
 Celery é uma ferramenta \textit{open source} focada em operações em tempo real numa fila de tarefas assincronas baseadas na passagem de mensagens distribuidas, tambem oferece suporte a operações de agendamento \cite{celery}.
 
-Celery possui funções que auxiliam a criação de rotinas, funcionando principalmente com Python\footnote[3]{\url{https://www.python.org/}}. Como Celery trabalha com a utilização de tarefas, podemos agendar seus funcionamentos utilizando \textit{cronjobs}\footnote[4]{\url{https://cron-job.org/en/}} para suas frequências.
+Celery possui funções que auxiliam a criação de rotinas, funcionando principalmente com Python\footnote[2]{\url{https://www.python.org/}}. Como Celery trabalha com a utilização de tarefas, podemos agendar seus funcionamentos utilizando \textit{cronjobs}\footnote[3]{\url{https://cron-job.org/en/}} para suas frequências.
 \subsection{Visualização dos Dados}
 Esta ferramenta será responsável por demonstrar os dados do banco de uma maneira mais intuitiva.
 \subsubsection*{Kibana}
@@ -61,20 +61,20 @@ Os arquivos \textit{\textbf{Main}} e \textit{\textbf{Schedule}} são resposávei
 \section{Extractor}
 O Extractor é responsável pela extração, manipulação das informações das fontes de dados e também por inserir e atualizar o banco de dados. Como o Extractor lidará com dados que se modificam com o tempo, será preciso criar rotinas que lidarão com esses dados temporais. No escopo inicial serão utilizados quatro APIs.
 
-A API \textit{\textbf{Steam WEB API}} é fornecida pela Steamworks\footnote[5]{\url{https://partner.steamgames.com}}, sendo assim é uma API oficial da Steam \cite{steam_api}. Ela possui métodos públicos e métodos privados. Os métodos públicos são abertos para qualquer usuário utiliza-los, já os métodos privados é necessário uma chave de desenvolvedor cedido pela própria Steamworks. Para acessar quaisquer dados da API é necessário um id, seja de usuário ou de jogo.
+A API \textit{\textbf{Steam WEB API}} é fornecida pela Steamworks\footnote[4]{\url{https://partner.steamgames.com}}, sendo assim é uma API oficial da Steam \cite{steam_api}. Ela possui métodos públicos e métodos privados. Os métodos públicos são abertos para qualquer usuário utiliza-los, já os métodos privados é necessário uma chave de desenvolvedor cedido pela própria Steamworks. Para acessar quaisquer dados da API é necessário um id, seja de usuário ou de jogo.
 
 A API \textit{\textbf{Steam Store API}} é fornecida pela Steam. Ela disponibiliza informações sobre os jogos guardados no banco de dados da Steam. Para acessar estes dados é necessário o id do jogo na Steam, porém também é possível passar filtros para pesquisas mais específicas.
 
 A API \textit{\textbf{Steam Spy API}} é fornecida pelo Steam Spy. Ela também disponibiliza informações sobre os jogos, porém ela também dispõe de outras informações como o número de donos ou número de avaliações positivas e negaticas de um determinado jogo. Para acessar estes dados é necessário o id do jogo na Steam, porém também é possível passar filtros para pesquisas mais específicas
 
-A API \textit{\textbf{Youtube API}} é fornecida pelo Google Developers\footnote[6]{\url{https://developers.google.com/}}, sendo assim a API oficial do Youtube. Ela dispõe de informações sobre cada vídeo como seus números de likes, dislikes e visualizações. Para extrair os dados de cada vídeo são necessário conseguir a lista dos 20 vídeos mais relevantes de um jogo, ápos isso com o id dos vídeos extrair suas informações.
+A API \textit{\textbf{Youtube API}} é fornecida pelo Google Developers\footnote[5]{\url{https://developers.google.com/}}, sendo assim a API oficial do Youtube. Ela dispõe de informações sobre cada vídeo como seus números de likes, dislikes e visualizações. Para extrair os dados de cada vídeo são necessário conseguir a lista dos 20 vídeos mais relevantes de um jogo, ápos isso com o id dos vídeos extrair suas informações.
 
 A relação entre os dados que serão extraídos e de qual API será utilizado esta representado na tabela \ref{table:dados}.
 \begin{table} [H]
 \centering
 \scalebox{0.7}{
 \begin{tabular}{|c|c|c|c|c|}
-\hline &\textit{\textbf{Steam WEB API}}&\textit{\textbf{Steam Store API}}&\textit{\textbf{Steam Spy API}}&\textit{\textbf{Youtube API}} \\
+\hline &\textit{\textbf{Steam WEB API}}&\textit{\textbf{Steam Spy API}}&\textit{\textbf{Steam Store API}}&\textit{\textbf{Youtube API}} \\
 \hline Nome&&&\cellcolor{green}& \\
 \hline Descrição&&&\cellcolor{green}& \\
 \hline Imagem \textit{Header}&&&\cellcolor{green}& \\
