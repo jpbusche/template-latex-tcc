@@ -1,94 +1,408 @@
 \chapter[Resultados Obtidos]{Resultados Obtidos}
-Neste capítulo serão exibidos os resultados obtidos nesta primeira parte do projeto. Será falado dos resultados sobre o software de extração e da plataforma web.
-\section{Software de Extração}
-Na parte de extração dos dados foram criados dois codigos teste. O código \ref{code:handler} representa o uso da \textit{gem} \textit{clockwork} como um \textit{handler} de frequência, o resultado obtido pelo uso do código pode ser visto na figura \ref{image:result_handler}. Já o código \ref{code:plugin} representa uma estrutura inicial de um \textit{plugin}, nele é feito a conexão com o Elasticsearch, extraídos os dados de uma API, manipula esses dados e inserir no Elasticsearch.
-\begin{lstlisting}[language={Ruby}, caption = {Código do \textit{Handler}}, label = {code:handler}]
-require 'clockwork'
-require 'active_support/time'
+Neste capítulo serão exibidos os resultados obtidos no decorrer do projeto.
 
-# O modulo necessita ter o nome Clockwork
-module Clockwork
+\section{Extractor}
+Para o Extractor foram criados as interface \textit{\textbf{Extractor}} e \textit{\textbf{Database}}, representados nos códigos \ref{code:extractor} e \ref{code:database}, respectivamente, o módulo \textit{\textbf{Utils}}, representado pelo código \ref{code:utils} e os arquivos \textit{\textbf{Main}} e \textit{\textbf{Schedule}} representados pelos códigos \ref{code:main} e \ref{code:schedule}, respectivamente. Também foram criados classes para cada \textit{plugin} e para o banco de dados do Elasticsearch, que podem ser encontrados no anexo \ref{anexo:codes}.
+\begin{lstlisting}[language={Python}, caption = {Código do \textit{\textbf{Extractor}}}, label = {code:extractor}] [H]
+from abc import ABC, abstractmethod
+from db.elastic import Elastic
+import datetime
+import requests
+import json
 
-	count_frequency = 0
-	count_games = 0
+class Extractor(ABC):
 
-	# Handler dos jobs
-	handler do |job|
-		if job.eql? 'frequency'
-			count_frequency += 1
-			print "A frequencia e: #{count_frequency}\n"
-		elsif job.eql? 'games'
-			count_games += 1
-			print "O numero de jogos e: #{count_games}\n"
-		end
-	end
+	url = "http://exampleofurl.com/api={}"
 
-	# Define a frequencia dos jobs
-	every(30.seconds, 'frequency')
-	every(1.minutes, 'games')
-end
+	@abstractmethod
+	def get_game(self, identifier):
+		pass
+
+	def manipulate_data(self, data):
+		pass
+
+	def get_api(self, identifier):
+		response = requests.get(self.url.format(identifier))
+		if response.status_code == requests.codes.ok:
+			response = json.loads(response.text)
+			return response
+		else:
+			raise PageNotFound("Page not found!!!")
+
+	def temporal_data(self, identifier, value, data_name):
+		elastic = Elastic('elastic:9200', 'steam')
+		array = []
+		try:
+			game = elastic.get(identifier)
+			array = game[data_name]
+		except:
+			array = []
+		current_date = datetime.datetime.now()
+		data = {}
+		data['value'] = value
+		data['date'] = current_date.strftime("%Y-%m-%d")
+		array.append(data)
+		return array
+
+
+class PageNotFound(Exception):
+	pass
+
+class GameNotFound(Exception):
+	pass
 \end{lstlisting}
-\begin{figure}
-\centering
-\includegraphics[scale=0.6]{figuras/result_handler.eps}
-\caption{Resultado da Compilação do \textit{Handler}}
-\label{image:result_handler}
-\end{figure}
-\begin{lstlisting}[language={Ruby}, caption = {Código do \textit{Plugin}}, label = {code:plugin}]
-require 'httparty'
-require 'elasticsearch'
+\begin{lstlisting}[language={Python}, caption = {Código do \textit{\textbf{Database}}}, label = {code:database}] [H]
+from abc import ABC, abstractmethod
 
-# Classe que funciona como uma hash
-class Game < Hash
-	def put(key, value)
-		self[key] = value;
-	end
-end
+class Database(ABC):
 
-game = Game.new
-# Conecta com o Elasticsearch
-client = Elasticsearch::Client.new log: true
-# Verifica se aquele index ja existe
-if !client.indices.exists? index: 'test'
-	client.indices.create index: 'test'
-end
-id = 730
-url = 'http://store.steampowered.com/api/appdetails/?appids=' + id.to_s
-# Extrai dados da API
-response = HTTParty.get(url)
-response.parsed_response
-data = response["730"]["data"]
-game.put("name", data["name"])
-game.put("description", data["detailed_description"])
-# Insere os dados no Elasticsearch
-client.update index: 'test', type: 'game', id: 730, body: game.to_json
+	@abstractmethod
+	def update(self, identifier, data):
+		pass
+
+	@abstractmethod
+	def get(self, identifier):
+		pass
+
+	@abstractmethod
+	def delete(self, identifier):
+		pass
+
+class DataNotFound(Exception):
+	pass
 \end{lstlisting}
-No decorrer do desenvolvimento da primeira parte do projeto, houve um mudança na política de privacidade da Steam, e isso modificou alguns dados que seriam extraídos, o principal foi o de número de donos. Antes de mudança a API do Steam Spy, providenciava um número quase exato do número de donos, após a mudança, agora a API providência apenas uma média estimada do número de donos. Isto alterar o projeto, já que agora não e possível mais fazer uma métrica exata da média de donos daquele gênero.
-\section{Plataforma Web}
-Para a plataforma web foi criado um protótipo que exibe como será a visualização dos dados, é também como será o fluxo dentro da plataforma. A figura \ref{image:inicial} é a tela inicial da plataforma, dela pode-se ir para as métricas ou para a aba sobre. A figura \ref{image:metrics} é a tela onde será apresentada as métricas, nesta página o usuário poderá definir os gêneros e as categorias que definirão o perfil do jogo. A figura \ref{image:rankings} é a tela quando o usuário clica na aba \textit{rankings}, nesta aba serão exibidas os \textit{rankings} de jogos daquele determinado perfil. A figura \ref{image:sugestoes} é a tela quando o usuário clica na aba sugestões, nesta aba serão exibidas algumas sugestões para a evolução daquele perfil.
-\begin{figure}
-\centering
-\includegraphics[scale=0.3]{figuras/tela_inicial.eps}
-\caption{Tela Inicial}
-\label{image:inicial}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[scale=0.3]{figuras/tela_metrics.eps}
-\caption{Tela de Métricas}
-\label{image:metrics}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[scale=0.3]{figuras/tela_ranking.eps}
-\caption{Tela de \textit{Rankings}}
-\label{image:rankings}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[scale=0.3]{figuras/tela_sugestoes.eps}
-\caption{Tela de Sugestões}
-\label{image:sugestoes}
-\end{figure}
+\begin{lstlisting}[language={Python}, caption = {Código do \textit{\textbf{Utils}}}, label = {code:utils}] [H]
+import colorlog
+import requests
+import json
+from ext.extractor import PageNotFound
 
-Os restos das imagens de prototipo poderão ser encontrado no anexo \ref{anexo:prototipe}.
+def setup_logger():
+	formatter = colorlog.ColoredFormatter(
+		"%(asctime)s -- %(log_color)s %(levelname)s: %(message)s",
+		datefmt = '%d/%m/%y|%H:%M:%S',
+		reset = True,
+		log_colors = {
+			'DEBUG': 'cyan',
+			'INFO': 'green',
+			'WARNING': 'purple',
+			'ERROR': 'red',
+			'CRITICAL': 'bold_red'
+		}
+	)
+	handler = colorlog.StreamHandler()
+	handler.setFormatter(formatter)
+	logger = colorlog.getLogger('Extractor')
+	logger.addHandler(handler)
+	logger.setLevel('DEBUG')
+	return logger
+
+def get_all_games():
+	games = []
+	response = requests.get('http://steamspy.com/api.php?request=all')
+	if response.status_code == requests.codes.ok:
+		response = json.loads(response.content)
+		for game in response:
+			pair = (response[game]['appid'], response[game]['name'])
+			games.append(pair)
+		return games
+	else:
+		raise PageNotFound("Page not found!!
+\end{lstlisting}
+\begin{lstlisting}[language={Python}, caption = {Código da \textit{\textbf{Main}}}, label = {code:main}] [H]
+from ext.currency import Currency
+from ext.steam_api import SteamAPI
+from ext.steam_spy import SteamSpy
+from ext.youtube_api import YoutubeAPI
+from ext.extractor import GameNotFound
+from db.elastic import Elastic
+from utils import setup_logger, get_all_games
+
+steam_api = SteamAPI()
+steam_spy = SteamSpy()
+steam_currency = Currency()
+youtube_api = YoutubeAPI()
+
+log = setup_logger()
+log.info('Initializing Elasticsearch')
+fail_id = open("ids_fails.txt", "a")
+
+index_body = {
+	"mapping": {
+		"game": {
+			"properties": {
+				"name": { "type": "text" },
+				"description": { "type": "text" },
+				"header_image": { "type": "text" },
+				"background_image": { "type": "text" },
+				"website": { "type": "text" },
+				"release_date": { "type": "text" },
+				"steam_id": { "type": "long" },
+				"metacritic_score": { "type": "long" },
+				"positive_avaliantion": { "type": "long" },
+				"negative_avaliantion": { "type": "long" },
+				"median_hours_played": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					} },
+				"owners": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					} },
+				"currency": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					} },
+				"view_count": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					} },
+				"like_count": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					} },
+				"dislike_count": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					} },
+				"userscore": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					} },
+				"genres": { "type": "text", "store": "true" },
+				"categories": { "type": "text", "store": "true" },
+				"languages": { "type": "text", "store": "true" },
+				"screenshots": { "type": "text", "store": "true" },
+				"developers": { "type": "text", "store": "true" },
+				"publishers": { "type": "text", "store": "true" },
+				"platforms": { "type": "text", "store": "true" },
+				"is_free": { "type": "boolean" },
+				"price": { "type": "nested",
+					"properties": {
+						"value": { "type": "double" },
+						"date": {"type": "date"}
+					}}
+			}
+		}
+	}
+}
+
+try:
+	elastic = Elastic('elastic:9200', 'steam')
+	log.info('Elasticsearch connected')
+	log.info('Create index Steam on Elasticsearch')
+	elastic.create_index(index_body)
+	games = get_all_games()
+	for game in games:
+		game_id, game_name = int(game[0]), str(game[1])
+		log.info('Starting the extraction of game: %s - %s', game_id, game_name)
+		try:
+			game = steam_api.get_game(game_id)
+			log.info('Steam API: successed!')
+			game.update(steam_spy.get_game(game_id))
+			log.info('Steam SPY: successed!')
+			game.update(steam_currency.get_game(game_id))
+			log.info('Steam Currency: successed!')
+			game.update(youtube_api.get_game(game_name))
+			log.info('Youtube API: successed!')
+			log.info('Starting insersion in the Elasticsearch')
+			elastic.update(game_id, game)
+			log.info('Finishing insersion in the Elasticsearch')
+		except Exception as error:
+			if type(error) == GameNotFound:
+				log.warning(error)
+			else:
+				log.error(error)
+				fail_id.write(str(game_id) + " || " + str(game_name) + "\n")
+except Exception as error:
+	log.error(error)
+\end{lstlisting}
+\begin{lstlisting}[language={Python}, caption = {Código do \textit{\textbf{Schedule}}}, label = {code:schedule}] [H]
+from celery import Celery
+from celery.schedules import crontab
+from db.elastic import Elastic
+from utils import get_all_games, setup_logger
+from ext.currency import Currency
+from ext.steam_api import SteamAPI
+from ext.steam_spy import SteamSpy
+from ext.youtube_api import YoutubeAPI
+from ext.extractor import GameNotFound
+import os
+
+app = Celery('schedule')
+steam_api = SteamAPI()
+steam_spy = SteamSpy()
+steam_currency = Currency()
+youtube_api = YoutubeAPI()
+app.conf.broker_url = 'redis://redis:6379/0'
+log = setup_logger()
+elastic = Elastic('elastic:9200', 'steam')
+
+@app.task
+def insert_new_games():
+	fail_id = open("ids_fails.txt", "a")
+	lst1 = elastic.get_all()
+	lst2 = get_all_games()
+	games = [game for game in lst2 if game not in lst1]
+	for game in games:
+		game_id, game_name = int(game[0]), str(game[1])
+		log.info('Starting the extraction of game: %s - %s', game_id, game_name)
+		try:
+			game = steam_api.get_game(game_id)
+			log.info('Steam API: successed!')
+			game.update(steam_spy.get_game(game_id))
+			log.info('Steam SPY: successed!')
+			game.update(steam_currency.get_game(game_id))
+			log.info('Steam Currency: successed!')
+			game.update(youtube_api.get_game(game_name))
+			log.info('Youtube API: successed!')
+			log.info('Starting insersion in the Elasticsearch')
+			elastic.update(game_id, game)
+			log.info('Finishing insersion in the Elasticsearch')
+		except Exception as error:
+			if type(error) == GameNotFound:
+				log.warning(error)
+			else:
+				log.error(error)
+			fail_id.write(str(game_id) + " || " + str(game_name) + "\n")
+
+@app.task
+def update_steam_api():
+	games = elastic.get_all()
+	for game in games:
+		log.info('Starting the extraction of game: %s - %s', game[0], game[1])
+		try:
+			gm = steam_api.get_game(int(game[0]))
+			log.info('Extraction successed!')
+			log.info('Starting update in the Elasticsearch')
+			elastic.update(int(game[0]), gm)
+			log.info('Finishing update in the Elasticsearch')
+		except Exception as error:
+			if type(error) == GameNotFound:
+				log.warning(error)
+			else:
+				log.error(error)
+			fail_id.write(str(game[0]) + " || " + str(game[1]) + "\n")
+
+@app.task
+def update_steam_spy():
+	games = elastic.get_all()
+	for game in games:
+		log.info('Starting the extraction of game: %s - %s', game[0], game[1])
+		try:
+			gm = steam_spy.get_game(int(game[0]))
+			log.info('Extraction successed!')
+			log.info('Starting update in the Elasticsearch')
+			elastic.update(int(game[0]), gm)
+			log.info('Finishing update in the Elasticsearch')
+		except Exception as error:
+			if type(error) == GameNotFound:
+				log.warning(error)
+			else:
+				log.error(error)
+			fail_id.write(str(game[0]) + " || " + str(game[1]) + "\n")
+
+@app.task
+def update_steam_currency():
+	games = elastic.get_all()
+	for game in games:
+		log.info('Starting the extraction of game: %s - %s', game[0], game[1])
+		try:
+			gm = steam_currency.get_game(int(game[0]))
+			log.info('Extraction successed!')
+			log.info('Starting update in the Elasticsearch')
+			elastic.update(int(game[0]), gm)
+			log.info('Finishing update in the Elasticsearch')
+		except Exception as error:
+			if type(error) == GameNotFound:
+				log.warning(error)
+			else:
+				log.error(error)
+			fail_id.write(str(game[0]) + " || " + str(game[1]) + "\n")
+
+@app.task
+def update_youtube_api():
+	games = elastic.get_all()
+	for game in games:
+		log.info('Starting the extraction of game: %s - %s', game[0], game[1])
+		try:
+			gm = youtube_api.get_game(str(game[1]))
+			log.info('Extraction successed!')
+			log.info('Starting update in the Elasticsearch')
+			elastic.update(int(game[0]), gm)
+			log.info('Finishing update in the Elasticsearch')
+		except Exception as error:
+			if type(error) == GameNotFound:
+				log.warning(error)
+			else:
+				log.error(error)
+			fail_id.write(str(game[0]) + " || " + str(game[1]) + "\n")
+
+@app.task
+def try_fails_id():
+	games = open("ids_fails.txt", "r")
+	for game in games:
+		game_id, game_name = game.split(" || ")
+		game_id = int(game_id)
+		log.info('Starting the extraction of game: %s - %s', game_id, game_name)
+		try:
+			game = steam_api.get_game(game_id)
+			log.info('Steam API: successed!')
+			game.update(steam_spy.get_game(game_id))
+			log.info('Steam SPY: successed!')
+			game.update(steam_currency.get_game(game_id))
+			log.info('Steam Currency: successed!')
+			game.update(youtube_api.get_game(game_name))
+			log.info('Youtube API: successed!')
+			log.info('Starting insersion in the Elasticsearch')
+			elastic.update(game_id, game)
+			log.info('Finishing insersion in the Elasticsearch')
+		except Exception as error:
+			if type(error) == GameNotFound:
+				log.warning(error)
+			else:
+				log.error(error)
+	os.remove("ids_fails.txt")
+
+@app.on_after_configure.connect
+def setup_periodic_tasks(sender, **kwargs):
+	log.info('Updating data from Steam API!')
+	sender.add_periodic_task(crontab(minute=0, hour=0), update_steam_api())
+	log.info('Updating data from Steamspy API!')
+	sender.add_periodic_task(crontab(minute=0, hour=0), update_steam_spy())
+	log.info('Updating data from Steam Currency!')
+	sender.add_periodic_task(crontab(minute=0, hour=0), update_steam_currency())
+	log.info('Updating data from Youtube API!')
+	sender.add_periodic_task(crontab(minute=0, hour=0), update_youtube_api())
+	log.info('Inserting new games!')
+	sender.add_periodic_task(crontab(minute=0, hour=0, day_of_week='sunday'), insert_new_games())
+	log.info('Trying again the fails inserts!')
+	sender.add_periodic_task(crontab(minute=0, hour=0, day_of_week='sunday'), try_fails_id())
+\end{lstlisting}
+O resultado da execução do arquivo \textit{\textbf{Main}} pode ser encontrado na figura \ref{image:result_main}, e um exemplo de como o arquivo fica guardado no Elasticsearch na figura \ref{image:result_elastic}.
+\begin{figure} [H]
+\centering
+\includegraphics[scale=0.45]{figuras/resultMain.eps}
+\caption{Execução \textit{\textbf{Main}} Terminal}
+\label{image:result_main}
+\end{figure}
+\begin{figure} [H]
+\centering
+\includegraphics[scale=0.45]{figuras/resultElastic.eps}
+\caption{Exemplo Elasticsearch}
+\label{image:result_elastic}
+\end{figure}
+O resultado da execução do arquivo \textit{\textbf{Schedule}} pode ser encontrado na figura \ref{image:result_schedule}.
+\begin{figure} [H]
+\centering
+\includegraphics[scale=0.5]{figuras/resultSchedule.eps}
+\caption{Execução \textit{\textbf{Schedule}} Terminal}
+\label{image:result_schedule}
+\end{figure}
