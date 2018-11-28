@@ -1,12 +1,12 @@
 \chapter[Metodologia]{Metodologia}
-A metodologia escolhida para o desenvolvimento da plataforma será a metodologia ágil, a metodologia principal que vai será utilizada é o Kanban, porém, não será utilizada sua forma pura, e sim com algumas modificações, que atendem as necessidades do projeto. A escolha dessa metodologia se dá pelas seguintes características: o projeto será desenvolvido de maneira incremental, ou seja, ele poderá ser modificado no decorrer da implementação; a equipe consiste em apenas uma pessoa, o que descarta a possibilidade de utilizar o Scrum ou XP (\textit{Extreme Programming}); o escopo do projeto será divididos em tarefas, e a utilização do Kanban facilita no descobrimento de gargalos.
+A metodologia escolhida para o desenvolvimento da plataforma será a metodologia ágil, a metodologia principal que vai será utilizada é o Kanban, porém, não será utilizada sua forma pura, e sim com algumas modificações, que atendem as necessidades do projeto. A escolha dessa metodologia se dá pelas seguintes características: o projeto será desenvolvido de maneira incremental, ou seja, ele poderá ser modificado no decorrer da implementação; a equipe consiste em apenas uma pessoa, o que descarta a possibilidade de utilizar o Scrum ou XP (\textit{Extreme Programming}); o escopo do projeto será dividido em tarefas, e a utilização do Kanban facilita no descobrimento de gargalos.
 
 A metodologia Kanban surgiu no Japão com o TPS (Sistema Toyota de Produção) \cite{tps} para controlar a fabricação de automóveis e foi inserida no meio de desenvolvimento de software no ano de 2007. Kanban é um termo japonês para sinal visual e uma das grandes características dessa metodologia é evidenciar os problemas existentes no processo. 
 
-A metodologia ágil surgiu no ano de 2001, com a reunião de especialistas em processos de desenvolvimento de software para discutir maneiras de melhorar o desempenho em projetos, com isso foi criado o Manifesto Ágil \cite{agil}. Uma das características das metodologias ágeis são sua capacidade de adaptar a novos fatores durante o desenvolvimento do projeto, ao invés de tentar prever o que pode acontecer e o que não pode
+A metodologia ágil surgiu no ano de 2001, com a reunião de especialistas em processos de desenvolvimento de software para discutir maneiras de melhorar o desempenho em projetos, com isso foi criado o Manifesto Ágil \cite{agil}. Uma das características das metodologias ágeis são sua capacidade de se adaptar a novos fatores durante o desenvolvimento do projeto, ao invés de tentar prever o que pode ou não acontecer.
 
 \section{Análise de Ferramentas}
-Nesta seção são feito estudos sobre as ferramentas que serão utilizadas no desenvolvimento do projeto.
+Nesta seção são feitos estudos sobre as ferramentas que serão utilizadas no desenvolvimento do projeto.
 \subsection{Banco de Dados}
 A ferramenta de banco de dados é responsável pelo armazenamento dos dados extraídos das fontes de dados.
 \subsubsection*{Elasticsearch}
@@ -37,13 +37,13 @@ A arquitetura do projeto é dividida em quatro partes: as fontes de dados, o ext
 \caption{Arquitura Geral do Projeto}
 \label{image:arquitetura}
 \end{figure}
-\textbf{Fonte de Dados} são locais onde se encontrar os dados que serão extraidos, manipulados e inseridos no banco de indexação, estes dados poderão vir de quaisquer fonte, sejam elas um banco de dados, de \textit{crawlers}, de APIs ou de arquivos locais.
+\textbf{Fonte de Dados} são locais onde se encontrar os dados que serão extraidos, manipulados e inseridos no banco de indexação, estes dados poderão vir de quaisquer fontes, sejam elas um banco de dados, de \textit{crawlers}, de APIs ou de arquivos locais.
 
 \textbf{Banco de Indexação} é um banco de dados responsável por guardar os dados manipulados pelo Extractor. Como será utilizado o banco de jogos da Steam, o banco de indexação precisa suportar um grande número de dados e rapidez na atualização dos dados e na suas buscas.
 
-\textbf{API RESTful} é a parte responsável por disponibilizar os dados do banco de indexaçõa, sem que o usuário precisa conectar diretamente a ele. Como será desenvolvida um API, outros e quaisquers projetos poderão usufruir dela.
+\textbf{API RESTful} é a parte responsável por disponibilizar os dados do banco de indexação, sem que o usuário precise se conectar diretamente a ele. Como será desenvolvida um API, outros e quaisquers projetos poderão usufruir dela.
 \subsection{Arquitetura Extractor}
-A arquitetura do Extractor e composta de três classes principais e de dois arquivos. Esta arquitetura está representada na figura \ref{image:extractor}.
+A arquitetura do Extractor é composta de três classes principais e de dois arquivos e está representada na figura \ref{image:extractor}.
 \begin{figure} [H]
 \centering
 \includegraphics[scale=0.5]{figuras/arquiteturaExtractor.eps}
@@ -52,22 +52,22 @@ A arquitetura do Extractor e composta de três classes principais e de dois arqu
 \end{figure}
 A interface \textit{\textbf{Extractor}} deverá ser herdada por todos os plugins. Esta interface possui funções responsáveis por fazer requisições na API, extrair dados desta API e manipular estes dados, sejam eles estáticos ou temporais.
 
-A interface \textit{\textbf{Database}} deverá ser herdada por todos os bancos de dados que possam a ser utilizado. Esta interface possui funções responsáveis por inserir/atualizar, delete e mostrar os dados guardados pelo banco.
+A interface \textit{\textbf{Database}} deverá ser herdada por todos os bancos de dados que possam a ser utilizado. Esta interface possui funções responsáveis por inserir/atualizar, deletar e mostrar os dados guardados pelo banco.
 
-O módulo \textit{\textbf{Utils}} é responsável por implementar funções que não se encaixam em nenhuma classe do software. A princípio este módulo possui funções responsaveis por configurar os logs e extrair todos os jogos que possuem.
+O módulo \textit{\textbf{Utils}} é responsável por implementar funções que não se encaixam em nenhuma classe do software. A princípio este módulo possui funções responsáveis por configurar os logs e extrair todos os jogos que possuem.
 
 Os arquivos \textit{\textbf{Main}} e \textit{\textbf{Schedule}} são resposáveis por, respectivamente, fazer a primeira inserção no banco de dados e por manter um rotina de atualizações nos dados dos jogos.
 
 \section{Extractor}
 O Extractor é responsável pela extração, manipulação das informações das fontes de dados e também por inserir e atualizar o banco de dados. Como o Extractor lidará com dados que se modificam com o tempo, será preciso criar rotinas que lidarão com esses dados temporais. No escopo inicial serão utilizados quatro APIs.
 
-A API \textit{\textbf{Steam WEB API}} é fornecida pela Steamworks\footnote[4]{\url{https://partner.steamgames.com}}, sendo assim é uma API oficial da Steam \cite{steam_api}. Ela possui métodos públicos e métodos privados. Os métodos públicos são abertos para qualquer usuário utiliza-los, já os métodos privados é necessário uma chave de desenvolvedor cedido pela própria Steamworks. Para acessar quaisquer dados da API é necessário um id, seja de usuário ou de jogo.
+A API \textit{\textbf{Steam WEB API}} é fornecida pela Steamworks\footnote[4]{\url{https://partner.steamgames.com}}, sendo assim é uma API oficial da Steam \cite{steam_api}. Ela possui métodos públicos e métodos privados. Os métodos públicos são abertos para qualquer usuário utilizá-los, já os métodos privados é necessário uma chave de desenvolvedor cedido pela própria Steamworks. Para acessar os dados da API é preciso um id, seja de usuário ou de jogo.
 
-A API \textit{\textbf{Steam Store API}} é fornecida pela Steam. Ela disponibiliza informações sobre os jogos guardados no banco de dados da Steam. Para acessar estes dados é necessário o id do jogo na Steam, porém também é possível passar filtros para pesquisas mais específicas.
+A API \textit{\textbf{Steam Store API}} é fornecida pela Steam. Ela disponibiliza informações sobre os jogos guardados no banco de dados da Steam. Para acessar estes dados é necessário o id do jogo na Steam, porém, também é possível passar filtros para pesquisas mais específicas.
 
-A API \textit{\textbf{Steam Spy API}} é fornecida pelo Steam Spy. Ela também disponibiliza informações sobre os jogos, porém ela também dispõe de outras informações como o número de donos ou número de avaliações positivas e negaticas de um determinado jogo. Para acessar estes dados é necessário o id do jogo na Steam, porém também é possível passar filtros para pesquisas mais específicas
+A API \textit{\textbf{Steam Spy API}} é fornecida pelo Steam Spy. Ela também disponibiliza informações sobre os jogos, porém, dispõe-se de outras informações como o número de donos ou de avaliações positivas e negativas de um determinado jogo. Para acessar estes dados é necessário o id do jogo na Steam, porém, também é possível passar filtros para pesquisas mais específicas
 
-A API \textit{\textbf{Youtube API}} é fornecida pelo Google Developers\footnote[5]{\url{https://developers.google.com/}}, sendo assim a API oficial do Youtube. Ela dispõe de informações sobre cada vídeo como seus números de likes, dislikes e visualizações. Para extrair os dados de cada vídeo são necessário conseguir a lista dos 20 vídeos mais relevantes de um jogo, ápos isso com o id dos vídeos extrair suas informações.
+A API \textit{\textbf{Youtube API}} é fornecida pelo Google Developers\footnote[5]{\url{https://developers.google.com/}}, sendo assim a API oficial do Youtube. Ela dispõe de informações sobre cada vídeo como os números de likes, dislikes e visualizações. Para extrair os dados de cada vídeo é necessário conseguir a lista dos 20 vídeos mais relevantes de um jogo, após isso com o id dos vídeos extrair suas informações.
 
 A relação entre os dados que serão extraídos e de qual API será utilizado esta representado na tabela \ref{table:dados}.
 \begin{table} [H]

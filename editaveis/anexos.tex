@@ -122,8 +122,6 @@ import json
 
 class YoutubeAPI(Extractor):
 
-	API_KEY = 'AIzaSyD7uEK8S8NE79iHUx70rTvwXBCEHp5BosQ'
-
 	def get_game(self, identifier):
 		videos = self.get_videos(identifier)
 		if len(videos) != 0:
