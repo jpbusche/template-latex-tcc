@@ -6,7 +6,7 @@ A sigla API (\textit{Application Programming Interface}) é um conjunto de rotin
 
 Para a utilização de APIs Webs existem várias arquiteturas que podem ser utilizadas, a mais comum é a arquitetura REST (\textit{Representational State Transfer}), que define um conjunto de restrições e propriedades baseadas no HTTP (\textit{Hypertext Transfer Protocol}).
 \subsection{\textit{Representational State Transfer}}
-A sigla REST, originalmente, se referia a um conjunto de princípios de arquitetura, nos tempos atuais é utilizada no sentido mais amplo, descrevendo qualquer interface web que use XML (\textit{Extensible Markup Language}) e HTTP, sem as abstrações adicionais dos protocolos baseados em padrões de trocas de mensagem. De acordo com Fielding \cite{fielding} a própria \textit{World Wide Web}, utilizou REST como base para o desenvolvimento do protocolo HTTP, sendo assim possível projetar um sistema de serviços web com a arquitetura REST.
+A sigla REST, originalmente, se referia a um conjunto de princípios de arquitetura, nos tempos atuais é utilizada no sentido mais amplo, descrevendo qualquer interface web que use XML (\textit{Extensible Markup Language}) e HTTP, sem as abstrações adicionais dos protocolos baseados em padrões de trocas de mensagem. De acordo com Fielding a própria \textit{World Wide Web}, utilizou REST como base para o desenvolvimento do protocolo HTTP, sendo assim possível projetar um sistema de serviços web com a arquitetura REST \cite{fielding}.
 
 A arquitetura REST possui quatro princípios principais, sendo eles:
 \begin{itemize}
@@ -17,11 +17,9 @@ A arquitetura REST possui quatro princípios principais, sendo eles:
 \end{itemize}
 
 \section{\textit{Business Intelligence}}
-No decorrer dos anos houve uma grande mudança em relação a criação, coleta e uso dos dados. Enquanto teve uma grande evolução na maneira que esses dados eram gerenciados, sempre existiu um desejo de extrair valores de negócios nas grandes pilhas de dados, que são capturadas hoje em diversas fontes, sejam elas estruturas de dados ou arquivos.
+BI (\textit{Business Intelligence}) é uma técnica de gerenciamento de dados, possibilitando a extração de valores de negócios das grandes pilhas de dados disponibilizadas, sejam elas de estruturas de dados ou de arquivos \cite{business_intelligence}. As análises deste dados proporcionam a criação de conhecimento, dessa maneira, foram desenvolvidadas vantagens inimagináveis no mercado de negócios. 
 
-Os resultados da análise destas pilhas de dados propiciaram a formação de conhecimento a respeito, dessa maneira, criou-se uma vantagem no mercado de negócios inimagináveis. Com esse conhecimento foi possível criar políticas de escolhas de ações para negócios em diferentes cenários. A exposição e exploração destes conhecimento é apenas uma das vantagens do uso de BI (\textit{Business Intelligence}).
-
-Uma das maiores vantagens do uso do BI está na otimização do processo de tomada de decisão, pois para cada processo de negócios é associado a sua \textit{performance}, e ,num mundo perfeito, cada escolha deve ser a mais otimizada, ou seja, a que tem a melhor \textit{performance} \cite{business_intelligence}.
+Uma das maiores vantagens da utilização de BI está na otimização do processo de tomada de decisão, pois num mundo ideal, cada escolha deve ser a mais otimizada, ou seja, a que tem a melhor \textit{performance}, outras vantagens vão, desde a criação de pólitica de escolhas para diferentes cenários de negócios, a exposição e exploração de conhecimentos \cite{business_intelligence}. 
 
 A utilização de BI no âmbito de trabalho apresenta uma evolução na \textit{performance} nas seguintes dimensões de negócio:
 \begin{itemize}
@@ -32,7 +30,7 @@ A utilização de BI no âmbito de trabalho apresenta uma evolução na \textit{
 \end{itemize}
 The Data Warehousing Institute \cite{tdwi}, uma instituição especializada na educação e treinamento em armazenamento de dados, define que BI são os processos, as tecnologias e as ferramentas necessárias para transformar dados em informação, informação em conhecimento e conhecimento em planos que dirigem rentáveis planos de negócios, ou seja BI engloba armazenamento de dados, ferramentas de análiticas e gestao de informação/conhecimento. 
 
-\textit{Business intelligence} geralmente considera as informações dos dados como ativos, por isso, pode-se valer a pena examinar o uso de informações no contexto de como o valor é criado dentro de uma organização. Para isso existem três tipos diferentes de perspectivas, sendo elas:
+BI geralmente considera as informações dos dados como ativos, por isso, pode-se valer a pena examinar o uso de informações no contexto de como o valor é criado dentro de uma organização. Para isso existem três tipos diferentes de perspectivas, sendo elas:
 \begin{itemize}
 		\item \textbf{Perspectiva funcional}: Neste tipo de perspectiva, os processos focam nas tarefas relacionadas a algum tipo particular de negócio, como vendas, \textit{marketing}, entre outros. Processos funcionais confiam nos dados que operam dentro dos padrões de atividades comerciais.
 		\item \textbf{Perspectiva interfuncional}: Como a maioria das empresas funcionam como um aglomerado de processos funcionais, e isto reflete em informações mais complexas. Para esta perspectiva a atividade é um sucesso quando todas as tarefas são completadas. Pela sua própria natureza, os processos envolvidos compartilham informações em diferentes funções, e o sucesso é medido tanto em termos de conclusão bem-sucedida, bem como as características do desempenho geral.
@@ -50,9 +48,9 @@ A aplicação padrão do \textit{game analytics} é na hora de informar o GUR (\
 \subsection{Telemetria}
 Telemetria são os dados obtidos à distância, geralmente digitais, porém qualquer dado transmitido à distância é telemetria. No contexto de jogos, telemetria seria algum jogo transmitindo dados sobre a interação do usuário com o jogo.
 
-Telemetria de jogos é o termo utilizado para qualquer dado obtido a distância que pertence durante o desenvolvimento ou evolução de um jogo, e isto inclui o monitoramento e análise: de servidores, dispositivos celulares e comportamento dos usuários. A fonte que produz mais dados por telemetrias, são os de usuário, por exemplo, interação com jogos, comportamento de compra e interações com outros jogadores ou aplicativos \cite{telemetry}.
+Telemetria de jogos é o uso da telemetria para obtençao de dados durante o desenvolvimento ou evolução de um jogo, e isto inclui o monitoramento e análise: de servidores, dispositivos celulares e comportamento dos usuários. A fonte que produz mais dados por telemetrias, são os de usuário, por exemplo, interação com jogos, comportamento de compra e interações com outros jogadores ou aplicativos \cite{telemetry}.
 \subsection{\textit{Game Metrics}}
-Em sua forma pura, os dados obtidos a partir da telemetria, não são de muito auxílio, por isso estes dados devem ser transformado em várias métricas interpretativas, como: o número de jogadores ativos por dia, bugs arrumados por semana, entre outros. Essas métricas são chamadas de \textit{game metrics}. \textit{Game metrics} possuem os mesmo potencias que outras fontes de BI. \textit{Game metrics} geralmente são definidas como um medição quantitativa de um ou mais atributos, ou objetos que operem no contexto de um jogo.
+Em sua forma pura, os dados obtidos a partir da telemetria, não são de muito auxílio, por isso estes dados devem ser transformado em várias métricas interpretativas, como: o número de jogadores ativos por dia, bugs arrumados por semana, entre outras. Essas métricas são chamadas de \textit{game metrics}. \textit{Game metrics} possuem os mesmo potencias que outras fontes de BI. \textit{Game metrics} geralmente são definidas como um medição quantitativa de um ou mais atributos, ou objetos que operem no contexto de um jogo.
 
 Métricas podem ser variáveis ou  agregações mais complexas, como a soma de várias variáveis, em outras palavras, as métricas podem ser simples variáveis que geram uma análise básica, ou a combinação de várias variáveis para gerar uma análise mais complexa e completa. Métricas que não estão relacionadas diretamente ao jogo, são chamadas de métricas de negócios. Durante a utilização do \textit{game analytics} é essencial a distinção entre as métricas de negócio e as \textit{game metrics}.
 
@@ -63,48 +61,17 @@ As game metrics foram categorizadas em três tipos por Mellon \cite{game_metrics
 	\item \textbf{Métricas de processo}: São métricas relacionadas ao processo de desenvolvimento de jogos. Similares as métricas de \textit{performance}, são utilizadas para gerenciar e monitorar métodos que foram adotados, ou que foram utilizados na hora do desenvolvimento do jogo. 
 \end{itemize}
 \section{Softwares Correlatos}
-Nesta parte de documento é levantado os softwares correlacionados, que possuem características ou objetivos parecidos com a plataforma a ser desenvolvida. Os principais são o Steam DB, uma ferramenta que disponibiliza informações sobre o banco de dados da Steam; a Steam Spy, uma plataforma web que disponibiliza informações sobre os jogos e suas vendas por região e o DFC Intelligence, uma ferramenta de pesquisa sobre o mercado de jogos.
+Nesta seção são levantado os softwares correlatos, que possuem características ou objetivos parecidos com a plataforma a ser desenvolvida. Os principais são o Steam DB, uma ferramenta que disponibiliza informações sobre o banco de dados da Steam; a Steam Spy, uma plataforma web que disponibiliza informações sobre os jogos e suas vendas por região e o DFC Intelligence, uma ferramenta de pesquisa sobre o mercado de jogos.
 \subsection{Steam DB}
-Steam DB é uma ferramenta \textit{open source} \textit{third-party} com objetivo de dar um melhor conhecimento sobre os jogos e suas atualizações disponíveis no banco de dados da Steam \cite{steam_db}. Esta ferramenta disponibiliza \textit{rankings} e gráficos de jogos para que o usuário tenha uma melhor visualização. Atualmente o Steam DB apresenta métricas individuais de cada jogo, não oferencendo nenhuma maneira de incremento. Na tabela \ref{table:steam_db} podemos ver as vantagens e desvantagens do Steam DB.
-\begin{table} [H]
-\centering
-\begin{tabular}{|p{7cm}|p{7cm}|}
-\hline \textbf{Vantagens} & \textbf{Desvantagens} \\
-\hline \textit{Open source} & Não possui política de contribuição \\
-\hline \textit{Rankings} e gráficos & Informações individuais de um jogo \\
-\hline Gratuito & Precisa de login na Steam \\
-\hline Informações individuais de um usuário & \\
-\hline
-\end{tabular}
-\caption{Vantagens e Desvantagens Steam DB}
-\label{table:steam_db}
-\end{table}
+Steam DB\footnote[1]{\url{https://steamdb.info/}} é uma ferramenta \textit{open source} com objetivo de dar um melhor conhecimento sobre os jogos e suas atualizações disponíveis no banco de dados da Steam \cite{steam_db}.
+
+Steam DB disponibiliza seus dados de maneira gratuita, porém para ter acesso a esses dados é preciso fazer login com uma conta da Steam. Estes dados estão dispostos de diversas maneiras, como \textit{rankings} de diferentes categorias, gráficos de um jogo específico e até informações sobre o usuário. Porém, não é possível fazer contribuições a ferramenta, impossibilitando a inserção de novos dados e de novas métricas.
 \subsection{Steam Spy}
-Steam Spy é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de determinado jogo ou vendas por região \cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores \textit{indies}, porém, para se conseguir todos os dados disponíveis pela plataforma é preciso pagar por eles. Atualmente a Steam Spy para que o usuário possua total acesso aos dados dela, o usuário precisa pagar. Na tabela \ref{table:steam_spy} podemos ver as vantagens e desvantagens do Steam Spy.
-\begin{table} [H]
-\centering
-\begin{tabular}{|p{7cm}|p{7cm}|}
-\hline \textbf{Vantagens} & \textbf{Desvantagens} \\
-\hline Disponibiliza número de donos e vendas por região & Não é totalmente gratuito \\
-\hline Gráficos genéricos e confusos & Não apresenta métricas sobre os jogos \\
-\hline Disponibiliza API para seus dados & Não é \textit{open source} \\
-\hline
-\end{tabular}
-\caption{Vantagens e Desvantagens Steam Spy}
-\label{table:steam_spy}
-\end{table}
+Steam Spy\footnote[2]{\url{http://steamspy.com/}} é uma plataforma Web que a partir de informações sobre os usuários da Steam, disponibiliza informações como o número de donos de determinado jogo ou vendas por região \cite{steam_spy}. Um dos objetivos especificados pelo Steam Spy é o auxílio a desenvolvedores \textit{indies}.
+
+Steam Spy dispõe seus dados de duas maneiras, uma delas é pela plataforma, como gráficos e \textit{rankings} por categoria. A outra forma e por meio de sua API, disponibilizada para desenvolvedores criarem suas próprias ferramentas. Porém, para ter acesso total a seus gráficos é preciso pagar por elas.
+
 \subsection{DFC Intelligence}
-DFC Intelligence é uma ferramenta paga que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado. Desenvolvedoras que utilizem essa ferramenta receberão informações sobre o número de vendas, picos de vendas, regiões que mais venderam, entre outras. Também será disponibilizado gráficos e métricas que informam como está o mercado de jogos \cite{dfc_intelligence}. Atualmente a ferramenta DFC Intelligence é focada apenas nos jogos das desenvolvedoras contratantes. Na tabela \ref{table:dfc_intelligence} podemos ver as vantagens e desvantagens do Steam DB.
-\begin{table} [H]
-\centering
-\begin{tabular}{|p{7cm}|p{7cm}|}
-\hline \textbf{Vantagens} & \textbf{Desvantagens} \\
-\hline Disponibiliza informações sobre o mercado de jogos & Não é gratuita \\
-\hline Auxiliam desenvolvedores na hora da criação de um jogo & Não mostrar o mercado de jogos como um todo \\
-\hline & Não é \textit{open source} \\
-\hline & Foca apenas nos jogos de uma desenvolvedora \\
-\hline
-\end{tabular}
-\caption{Vantagens e Desvantagens DFC Intelligence}
-\label{table:dfc_intelligence}
-\end{table}
+DFC Intelligence\footnote[3]{\url{https://www.dfcint.com/}} é uma ferramenta que auxiliam desenvolvedoras a tomar conhecimentos sobre estatísticas de seus jogos no mercado.
+
+Para as desenvolvedoras que contratem o serviço da DFC Intelligence receberão métricas sobre seus jogos, e também sobre informações sobre como o mercado está agindo para jogos semelhantes. Porém, para que uma desenvolvedora possa usufruir de seus dados é preciso pagar uma taxa de consulta, além do pagamento pela ferramenta.

@@ -1,4 +1,4 @@
-TARGET = TCC_FGA.pdf
+TARGET = TCC_JoaoPauloBusche_140023348.pdf
 
 BIBTEX = bibtex
 LATEX = latex
