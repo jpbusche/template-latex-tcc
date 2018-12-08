@@ -1,50 +1,13 @@
 \chapter[Considerações Finais]{Considerações Finais}
-\section{Cronograma}
-Em relação ao cronograma, podemos listar as seguintes atividades:
-\begin{enumerate}
-	\item \label{t1} Definição dos requisitos do sistema.
-	\item \label{t2} Definição de quais dados serão extraídos.
-	\item \label{t3} Definição das métricas do sistema.
-	\item \label{t4} Estudo sobre \textit{game analytics} e \textit{business intelligence}.
-	\item \label{t5} Implementação do protótipo da plataforma web.
-	\item \label{t6} Escrita do TCC1.
-	\item \label{t7} Implementação do \textit{handler} e \textit{main} do software de extração
-	\item \label{t8} Implementação dos \textit{plugins} do software de extração.
-	\item \label{t9} Implementação da API de jogos.
-	\item \label{t10} Implementação da API de \textit{rankings}.
-	\item \label{t11} Teste dos módulos da API.
-	\item \label{t12} Implementação da  visualização das métricas.
-	\item \label{t13} Implementação da visualização dos \textit{rankings}.
-	\item \label{t14} Implementação das sugestões da plataforma w
-	\item \label{t15} Escrita do TCC2.
-\end{enumerate}
-O cronograma do trabalho está apresentado na tabela \ref{table:cronograma}.
-\begin{table}
-\centering
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-\hline \multicolumn{11}{|c|}{2018} \\
-\hline &MAR&ABR&MAI&JUN&JUL&AGO&SET&OUT&NOV&DEZ \\
-\hline \ref{t1} & \cellcolor{green}&&&&&&&&& \\
-\hline \ref{t2} & \cellcolor{green}&\cellcolor{green}&&&&&&&& \\
-\hline \ref{t3} && \cellcolor{green}&\cellcolor{green}&&&&&&& \\
-\hline \ref{t4} && \cellcolor{green}&\cellcolor{green}&&&&&&& \\
-\hline \ref{t5} &&& \cellcolor{green}&\cellcolor{green}&&&&&& \\
-\hline \ref{t6} && \cellcolor{green}&\cellcolor{green}&\cellcolor{green}&&&&&& \\
-\hline \ref{t7} &&&&& \cellcolor{yellow}&\cellcolor{yellow}&&&& \\
-\hline \ref{t8} &&&&& \cellcolor{yellow}&\cellcolor{yellow}&&&& \\
-\hline \ref{t9} &&&&&& \cellcolor{red}&\cellcolor{red}&&& \\
-\hline \ref{t10} &&&&&& \cellcolor{red}&\cellcolor{red}&&& \\
-\hline \ref{t11} &&&&&&& \cellcolor{red}&\cellcolor{red}&& \\
-\hline \ref{t12} &&&&&&& \cellcolor{red}&\cellcolor{red}&\cellcolor{red}& \\
-\hline \ref{t13} &&&&&&& \cellcolor{red}&\cellcolor{red}&\cellcolor{red}& \\
-\hline \ref{t14} &&&&&&&& \cellcolor{red}&\cellcolor{red}&\cellcolor{red} \\
-\hline \ref{t15} &&&&&&& \cellcolor{red}&\cellcolor{red}&\cellcolor{red}&\cellcolor{red} \\
-\hline \multicolumn{11}{|c|}{Legendas} \\
-\hline \multicolumn{10}{|l|}{Tarefas realizadas}&\cellcolor{green} \\
-\hline \multicolumn{10}{|l|}{Tarefas em andamento}&\cellcolor{yellow} \\
-\hline \multicolumn{10}{|l|}{Tarefas não realizadas}&\cellcolor{red} \\
-\hline
-\end{tabular}
-\caption{Cronograma do Trabalho}
-\label{table:cronograma}
-\end{table}
+Neste capítulo são discutidos as conclusões levantadas sobre o desenvolvimento do projeto.
+
+Sobre a implementação da arquitetura proposta, é concluido que, apesar dos gargalos encontrados do decorrer do projeto, a arquitetura proposta, mostrou-se capaz de completar as funcionalidades a ela atribuída. Após a divisão dos tipos de dados, em estáticos e temporais, o uso do Elasticsearch tornou-se muito mais vantajoso, o que aumento a \textit{performance} de inserção dos dados, como também diminuiu o número de gargalos do projeto. Finalmente, posso concluir que a proposta de arquitetura de extração de dados do mercado de jogos precisa de algumas modificações, porém, consegue criar um lugar onde todos esses dados se concentre.
+
+\section{Trabalhos Futuros}
+Nesta seção são levantados possíveis trabalhos futuros no desenvolvimento do projeto.
+\begin{itemize}
+	\item Inserção de novas fontes de dados, disponibilizando uma maior número de informações sobre os jogos.
+	\item Implementação de uma API RESTful, possibilitando uma maneira mais fácil de obtenção destes dados.
+	\item Criação de métricas de negócios a partir dos dados extraídos.
+	\item Desenvolvimento de uma plataforma web para disponibilização destas métricas.
+\end{itemize}
