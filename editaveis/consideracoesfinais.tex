@@ -1,13 +1,17 @@
 \chapter[Considerações Finais]{Considerações Finais}
 Neste capítulo são discutidos as conclusões levantadas sobre o desenvolvimento do projeto.
 
-Sobre a implementação da arquitetura proposta, é concluido que, apesar dos gargalos encontrados do decorrer do projeto, a arquitetura proposta, mostrou-se capaz de completar as funcionalidades a ela atribuída. Após a divisão dos tipos de dados, em estáticos e temporais, o uso do Elasticsearch tornou-se muito mais vantajoso, o que aumento a \textit{performance} de inserção dos dados, como também diminuiu o número de gargalos do projeto. Finalmente, posso concluir que a proposta de arquitetura de extração de dados do mercado de jogos precisa de algumas modificações, porém, consegue criar um lugar onde todos esses dados se concentre.
+Durante a implementação da arquitetura, diversos desafios apareceram, muitos desses em consequência da pouco conhecimento da linguagem de programação escolhida. Dentre esses desafios, houve um que não foi resolvido no tempo dedicado a esse trabalho, sendo ele, a implementação da funcionalidade de manter os registros dos dados temporais.
+
+Com mais maturidade sobre as ferramentas utilizadas no decorrer do projeto, percebo, que havia maneiras mais eficientes de desenvolver a arquitetura, e, por consequência, maneiras de implementar o registro de dados temporias, como, a cada chamada das tarefas de atualização das informações, fosse criado um novo documento no Elasticsearch, não inserido num já existente.
+
+Finalmente, conclui-se que a proposta de arquitetura de extração de dados do mercado de jogos, insere e disponibilizá esses dados num só lugar, além de possibilitar a criação de ferramentas para a utilização dos mesmos.
 
 \section{Trabalhos Futuros}
-Nesta seção são levantados possíveis trabalhos futuros no desenvolvimento do projeto.
+Nesta seção são levantados possíveis trabalhos que podem ser desenvolvidas a partir do presente. São eles:
 \begin{itemize}
-	\item Inserção de novas fontes de dados, disponibilizando uma maior número de informações sobre os jogos.
-	\item Implementação de uma API RESTful, possibilitando uma maneira mais fácil de obtenção destes dados.
-	\item Criação de métricas de negócios a partir dos dados extraídos.
-	\item Desenvolvimento de uma plataforma web para disponibilização destas métricas.
+	\item inserção de novas fontes de dados, disponibilizando uma maior número de informações sobre os jogos;
+	\item implementação de uma API RESTful, possibilitando uma maneira mais fácil de obtenção destes dados;
+	\item criação de métricas de negócios a partir dos dados extraídos;
+	\item desenvolvimento de uma plataforma web para disponibilização destas métricas.
 \end{itemize}

@@ -4,21 +4,21 @@ Neste capítulo são exibidos os resultados obtidos desta arquitetura de extraç
 \section{Software de Extração}
 Seguindo a arquitetura proposta para a extração dos dados, foi verificado que a extração ocorria da maneira prevista, onde apenas nas primeiras 8 horas, foram recolhidos 8341 jogos. Porém, após as 8 horas passadas, foram identificados os gargalos da arquitetura. 
 
-Inicialmente, não era de conhecimento, que a API do Youtube possuia limitações de requisições, este foi o gargalo da arquitetura, pois passada as 8 horas, nenhum jogo mais era adicionado ao banco. Após isso foi feita uma mudança significativa no software de extração, há separação entre dois tipos, assim a primeira inserção, seria feita apenas com os dados estáticos, e as atualizações com os dados temporais.
+E não era de conhecimento, que a API do Youtube possuía limitações de requisições. Este foi o gargalo da arquitetura, pois passadas 8 horas, nenhum jogo mais era adicionado ao banco. Após isso foi feita uma mudança significativa no software de extração, há separação entre dois tipos, assim a primeira inserção, seria feita apenas com os dados estáticos, e as atualizações com os dados temporais.
 
-Com o problema da primeira inserção resolvido, foi pensando em como seria burlado as limitações da API do Youtube, para isso foi pensando em duas soluções. Há primeira, a qual foi implementada, foi diminuir a frequência que estes dados era requisitados, e com isso têm-se mais tempo para o tratamento dos erros que ocorreram. 
+Com o problema da primeira inserção resolvido, foi pensando em como seria contornado as limitações da API do Youtube, para isso foi pensado em duas soluções. Há primeira, a qual foi implementada, foi diminuir a frequência que estes dados era requisitados, e com isso tem-se mais tempo para o tratamento dos erros que ocorreram. 
 
-Há segunda seria a aquisição de diversas chaves da API, assim seria feito uma alternância entre essas chaves para burla as limitações da API, no momento da criação do projeto existiam 26586 jogos no banco de dados da Steam, como cada chave inseri aproximadamente 8 mil jogos, eram preciso quatro chaves para fazer a inserção completa, porém, este tipo de abordagem possui seus problemas, pois para cada chave, era preciso ter um conta de desenvolvedor na Developers Google, assim quanto mais jogos houvesem, mais chaves seriam necessárias.
+A segunda seria a aquisição de diversas chaves da API, assim, seria feito uma alternância entre essas chaves para contornar as limitações da API, no momento da criação do projeto existiam 26.586 jogos no banco de dados da Steam, como cada chave insere aproximadamente 8 mil jogos, eram necessárias quatro chaves para fazer a inserção completa, porém, este tipo de abordagem possui seus problemas, pois para cada chave, era preciso ter um conta de desenvolvedor na Google Developers, por conseguinte quanto mais jogos houvesem, mais chaves seriam necessárias.
 
-Para as limitações de requisições das outras APIs, como essas não atrapalhavam diretamente a inserção dos dados no Elasticsearch, há solução implementada é mais simples. Quando ocorria algum erro de alguma destas requisições, o id do jogo é guardado num arquivo, e futuramente, e realizado a inserção novamente dos jogos que estão gravados no arquivo, caso ocorra erro novamente, o jogo é deletado do arquivo.	
+No tocante das limitações de requisições das outras APIs, como essas não atrapalhavam diretamente a inserção dos dados no Elasticsearch, a solução implementada é mais simples. Quando ocorre algum erro de alguma destas requisições, o id do jogo é guardado num arquivo, e futuramente, e realizada nova inserção dos jogos guardados no arquivo, caso ocorra erro novamente, o jogo é deletado.	
 
-Após feita a divisão dos dados, foi possível notar que, para fazer a primeira inserção dos dados estáticos, foram inseridos 12813 jogos, em 7 horas. Nota-se então que ouve uma melhora na \textit{performace} do algoritmo implementado.
+Após feita a divisão dos dados, foi possível notar que, para fazer a primeira inserção dos dados estáticos, foram inseridos 12.813 jogos, em 7 horas. Nota-se então que houve uma melhora na \textit{performace} do algoritmo implementado.
 
 \section{Visualização dos Dados}
 Nesta seção são mostrados alguns \textit{dashboards} criados com a ferramenta Kibana, possibilitando uma melhor visualização dos dados.
 
 \subsection*{\textit{Dashboard} de Gênero}
-O primeiro \textit{dashboard} foi criado para mostrar as relações entre o gênero de um jogo, com os outros dados estáticos. Com isso foram disponibilizados gráficos que mostram a relação de um gênero, com outros gêneros, com suas categorias, com as linguagens suportadas e com as desenvolvedoras deste gênero. Um exemplo deste \textit{dashboard} pode ser visto na Figura \ref{image:genreDash}.
+O primeiro \textit{dashboard} foi criado para mostrar as relações entre o gênero de um jogo, com os outros dados estáticos. Com isso foram disponibilizados gráficos que mostram a relação de um gênero com outros gêneros, com suas categorias, com as linguagens suportadas e com as desenvolvedoras deste gênero. Um exemplo deste \textit{dashboard} pode ser visto na Figura \ref{image:genreDash}.
 \begin{figure} [H]
 \centering
 \includegraphics[scale=0.25]{figuras/genreDashboard.eps}
@@ -27,7 +27,7 @@ O primeiro \textit{dashboard} foi criado para mostrar as relações entre o gên
 \end{figure}
 
 \subsection*{\textit{Dashboard} de Desenvolvedora}
-Também foi criado um \textit{dashboard} para mostrar as relações entre uma desenvolvedora, com os outros dados estáticos. Para mostrar essa relação foram criadas métricas e gráficos, métricas para mostrar quantos jogos a desenvolvedora auto publicou, e gráficos para mostrar relações entre uma desenvolvedora e os gêneros utilizados, linguagens suportadas e categorias mais comuns. Um exemplo deste \textit{dashboard} pode ser visto na Figura \ref{image:devDash}.
+Também foi criado um \textit{dashboard} para mostrar as relações entre uma desenvolvedora, com os outros dados estáticos. Para mostrar essa relação foram criadas métricas e gráficos. As métricas foram utilizadas para mostrar quantos jogos a desenvolvedora auto publicou, e gráficos para mostrar relações entre uma desenvolvedora e os gêneros utilizados, linguagens suportadas e categorias mais comuns. Um exemplo deste \textit{dashboard} pode ser visto na Figura \ref{image:devDash}.
 \begin{figure} [H]
 \centering
 \includegraphics[scale=0.25]{figuras/devDashboard.eps}
